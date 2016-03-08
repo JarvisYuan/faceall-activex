@@ -1,0 +1,60 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var path = require('path');
+var prompt = require('prompt');
+
+prompt.start();
+
+prompt.get([{
+    name: "host",
+    description: "Host name/address for MongoDB",
+    type: "string",
+    default: "localhost",
+    required: true
+}, {
+    name: "port",
+    description: "MongoDB port",
+    type: "number",
+    default: 27017,
+    required: true
+}, {
+    name: "username",
+    description: "Username for MongoDB",
+    type: "string",
+    default: "root",
+    required: true
+}, {
+    name: "password",
+    description: "Password for MongoDB",
+    type: "string",
+    default: "root",
+    // hidden: true,
+    // replace: "*",
+    required: true
+}, {
+    name: "dbname",
+    description: "Name of your database",
+    type: "string",
+    default: "faceall_activex",
+    pattern: /^[a-zA-Z][a-zA-Z0-9_]+$/,
+    message: "Name can contain only letters, numbers and underline(_) and must start with a letter.",
+    required: true
+}], function(err, result) {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    var result_obj = {
+        "host": result.host,
+        "port": result.port,
+        "username": result.username,
+        "password": result.password,
+        "dbname": result.dbname
+    };
+    fs.writeFile(path.join(__dirname, '../config.json'), JSON.stringify(result_obj, null, 4), function() {
+        console.log("Installation complete.");
+        console.log("    You can view the configurations in config.json,");
+        console.log("    and you can run this installer again to refresh the configurations.")
+    });
+});
