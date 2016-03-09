@@ -29,3 +29,4 @@ node_modules
 # User defined
 .to_ignore
 config.json
+/public/uploads
