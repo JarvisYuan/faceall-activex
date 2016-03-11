@@ -5,8 +5,26 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+require('./lib/utils');
+
 var routes = require('./routes/index');
+var api = require('./routes/api');
 var users = require('./routes/users');
+
+var mongoose = require('mongoose');
+var db_config = JSON.parse(require('fs').readFileSync('./config.json'));
+
+mongoose.connect("mongodb://%s:%s@%s:%d/%s".format(
+            db_config.username,
+            db_config.password,
+            db_config.host,
+            db_config.port,
+            db_config.dbname));
+
+mongoose.connection.on('error', function() {
+  console.error('database connection failed.');
+  process.exit(2);
+});
 
 var app = express();
 
@@ -23,6 +41,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/api', api);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
