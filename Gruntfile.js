@@ -175,5 +175,6 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['concat:vendor', 'uglify:vendor', 'copy', 'server', 'watch']);
+  grunt.registerTask('deploy', ['concat:vendor', 'uglify:vendor', 'copy']);
 
 };
