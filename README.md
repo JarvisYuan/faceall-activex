@@ -1,4 +1,4 @@
-#faceall-activex
+﻿#faceall-activex
 
 ## Deploy
 `npm install`（可能需要翻墙）
@@ -11,7 +11,7 @@
 
 ## Start Developing
 
-第一步：敲下`grunt`
+第一步：分别敲下`mongod --auth`，`grunt`
 
 第二步：尽情的玩耍吧！
 
