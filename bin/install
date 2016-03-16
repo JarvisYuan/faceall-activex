@@ -7,25 +7,25 @@ var prompt = require('prompt');
 prompt.start();
 
 prompt.get([{
-    name: "host",
+    name: "db_host",
     description: "Host name/address for MongoDB",
     type: "string",
     default: "localhost",
     required: true
 }, {
-    name: "port",
+    name: "db_port",
     description: "MongoDB port",
     type: "number",
     default: 27017,
     required: true
 }, {
-    name: "username",
+    name: "db_username",
     description: "Username for MongoDB",
     type: "string",
     default: "root",
     required: true
 }, {
-    name: "password",
+    name: "db_password",
     description: "Password for MongoDB",
     type: "string",
     default: "root",
@@ -33,12 +33,28 @@ prompt.get([{
     // replace: "*",
     required: true
 }, {
-    name: "dbname",
+    name: "db_dbname",
     description: "Name of your database",
     type: "string",
     default: "faceall_activex",
     pattern: /^[a-zA-Z][a-zA-Z0-9_]+$/,
     message: "Name can contain only letters, numbers and underline(_) and must start with a letter.",
+    required: true
+}, {
+    name: "api_key",
+    description: "Faceall service API Key",
+    type: "string",
+    default: "KUYVaAd06zoWfBFS2M9N6qfGKgVS1v7Ckx1cPnhQ",
+    pattern: /^[a-zA-Z0-9]+$/,
+    message: "Key can contain only letters and numbers.",
+    required: true
+}, {
+    name: "api_secret",
+    description: "Faceall service API Secret",
+    type: "string",
+    default: "4uSTnMDZqXqurWa4JwLT6YsSti4cth6R0K0JcdsL",
+    pattern: /^[a-zA-Z0-9]+$/,
+    message: "Secret can contain only letters and numbers.",
     required: true
 }], function(err, result) {
     if (err) {
@@ -46,11 +62,17 @@ prompt.get([{
         return;
     }
     var result_obj = {
-        "host": result.host,
-        "port": result.port,
-        "username": result.username,
-        "password": result.password,
-        "dbname": result.dbname
+        "db": {
+            "host": result.db_host,
+            "port": result.db_port,
+            "username": result.db_username,
+            "password": result.db_password,
+            "dbname": result.db_dbname
+        },
+        "api": {
+            "key": result.api_key,
+            "secret": result.api_secret
+        }
     };
     fs.writeFile(path.join(__dirname, '../config.json'), JSON.stringify(result_obj, null, 4), function() {
         console.log("Installation complete.");

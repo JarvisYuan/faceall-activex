@@ -12,7 +12,7 @@ var api = require('./routes/api');
 var users = require('./routes/users');
 
 var mongoose = require('mongoose');
-var db_config = JSON.parse(require('fs').readFileSync('./config.json'));
+var db_config = require('./lib/config').db;
 
 mongoose.connect("mongodb://%s:%s@%s:%d/%s".format(
             db_config.username,
