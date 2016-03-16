@@ -30,3 +30,6 @@ node_modules
 .to_ignore
 config.json
 /public/uploads
+/public/javascripts/*
+/public/stylesheets/*
+/vendor/*.js
