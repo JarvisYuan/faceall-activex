@@ -41,6 +41,14 @@ prompt.get([{
     message: "Name can contain only letters, numbers and underline(_) and must start with a letter.",
     required: true
 }, {
+    name: "api_server",
+    description: "Faceall service API server url (with version)",
+    type: "string",
+    default: "http://api.faceall.cn/v2",
+    pattern: /^(http|https)\:\/\/[a-zA-Z][a-zA-Z0-9\.\/]+[a-zA-Z0-9]$/,
+    message: "URL must be in http:// or https:// protocal, and do not have slash(/) at the end.",
+    required: true
+}, {
     name: "api_key",
     description: "Faceall service API Key",
     type: "string",
@@ -70,6 +78,7 @@ prompt.get([{
             "dbname": result.db_dbname
         },
         "api": {
+            "server": result.api_server,
             "key": result.api_key,
             "secret": result.api_secret
         }
