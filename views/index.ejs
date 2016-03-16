@@ -2,10 +2,14 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='../public/stylesheets/style.css' />
+    <script type="text/javascript" src="../public/javascripts/faceall-activex.min.js"></script> 
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <video id="video" autoplay="" style='width:400px;height:300px'></video>
+    <button id='picture'>PICTURE</button> 
+    <canvas id="canvas" width="400" height="300"></canvas>
   </body>
 </html>
