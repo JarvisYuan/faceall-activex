@@ -64,6 +64,12 @@ prompt.get([{
     pattern: /^[a-zA-Z0-9]+$/,
     message: "Secret can contain only letters and numbers.",
     required: true
+}, {
+    name: "compare_score_threshold",
+    description: "The threshold of score to judge the compare result",
+    type: "number",
+    default: 0.8,
+    required: true
 }], function(err, result) {
     if (err) {
         console.error(err);
@@ -81,6 +87,9 @@ prompt.get([{
             "server": result.api_server,
             "key": result.api_key,
             "secret": result.api_secret
+        },
+        "compare": {
+            "score_threshold": result.compare_score_threshold
         }
     };
     fs.writeFile(path.join(__dirname, '../config.json'), JSON.stringify(result_obj, null, 4), function() {
