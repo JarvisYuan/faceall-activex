@@ -179,6 +179,12 @@ router.post('/checkin', function(req, res, next) {
                                     } else if (!visitor) {
                                         res.send(new ResponseError(2001));
                                     } else {
+                                        var visitHistory = new VisitHistoryModel({
+                                            visitorId: visitor._id,
+                                            placeId: place._id,
+                                            imageId: photoImage._id,
+                                        });
+                                        visitHistory.save();
                                         res.send(new ResponseError(0, null, {visitor: visitor}));
                                     }
                                 });
