@@ -35,7 +35,7 @@ module.exports = function(model, opts) {
         return model.find().sort(qSort).skip(qSkip).limit(qTake)
         .exec(function (err, items) {
             if (err) {
-                console.error('An error occured.', err);
+                console.error("An error occured\n\t", err.message);
                 res.sendStatus(500);
             } else {
                 opts.listCallback && opts.listCallback(items, req, res, next);
@@ -48,7 +48,7 @@ module.exports = function(model, opts) {
         var item = new model(req.body);
         return item.save(function (err) {
             if (err) {
-                console.error('An error occured.', err);
+                console.error("An error occured\n\t", err.message);
                 res.sendStatus(500);
             } else {
                 opts.insertCallback && opts.insertCallback(item, req, res, next);
@@ -59,7 +59,7 @@ module.exports = function(model, opts) {
     router.get('/:id', function (req, res, next) {
         return model.findById(req.params.id, function (err, item) {
             if (err) {
-                console.error('An error occured.', err);
+                console.error("An error occured\n\t", err.message);
                 res.sendStatus(500);
             } else {
                 opts.fetchCallback && opts.fetchCallback(item, req, res, next);
@@ -71,7 +71,7 @@ module.exports = function(model, opts) {
         if (req.body._id) delete req.body._id; // to ensure no preserved field _id in structure
         return model.findOneAndUpdate({ _id: req.params.id }, { $set: req.body}, null, function (err, item) {
             if (err) {
-                console.error('An error occured.', err);
+                console.error("An error occured\n\t", err.message);
                 res.sendStatus(500);
             } else {
                 opts.updateCallback && opts.updateCallback(item, req, res, next);
@@ -82,7 +82,7 @@ module.exports = function(model, opts) {
     router.delete('/:id', function (req, res, next) {
         return model.remove({ _id: req.params.id }, function (err, item) {
             if (err) {
-                console.error('An error occured.', err);
+                console.error("An error occured\n\t", err.message);
                 res.sendStatus(500);
             } else {
                 opts.removeCallback && opts.removeCallback(item, req, res, next);
