@@ -1,4 +1,3 @@
-<script type="text/javascript">
 
 var video = document.getElementById("video");
 var context = canvas.getContext("2d")
@@ -21,4 +20,3 @@ if (navigator.getUserMedia) { // ±ê×¼µÄAPI
 document.getElementById("picture").addEventListener("click", function () {
                 context.drawImage(video, 0, 0, 640, 480);
  });
-</script>
