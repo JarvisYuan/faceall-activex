@@ -27,7 +27,12 @@ router.post('/register', function(req, res, next) {
             res.sendStatus(400);
             return;
         }
-        VisitorModel.findOne({ cid: cid }, {}, function(err, visitor) {
+        var today = new Date();
+        VisitorModel.findOne({
+            "cid": cid,
+            "validPeriod.start": { "$lte": today },
+            "validPeriod.end": { "$gt": today }
+        }, {}, function(err, visitor) {
             if (err) {
                 new CommonError("An error occured when register", {error: err}).print();
                 res.sendStatus(500);
@@ -45,7 +50,7 @@ router.post('/register', function(req, res, next) {
                             if (place) {
                                 // photo: the photo taken by camera
                                 // portrait: the photo on the id-card
-                                if (place.roles.indexOf('o2n') >= 0) {
+                                if (place.roles.indexOf('o2o') >= 0) {
                                     var photoFile = files['photo'][0];
                                     var portraitFile = files['portrait'][0];
                                     var photoImage, portraitImage;
@@ -159,7 +164,7 @@ router.post('/checkin', function(req, res, next) {
                 res.sendStatus(500);
             } else {
                 if (place) {
-                    if (place.roles.indexOf('o2o') >= 0) {
+                    if (place.roles.indexOf('o2n') >= 0) {
                         var photoFile = files['photo'][0];
                         var photoImage;
                         service_helper.addImage(photoFile.path, function(err, resErr, image) {
