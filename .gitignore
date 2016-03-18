@@ -33,3 +33,4 @@ config.json
 /public/javascripts/*
 /public/stylesheets/*
 /vendor/*.js
+/doc/*.html
