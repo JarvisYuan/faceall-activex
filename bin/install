@@ -41,31 +41,7 @@ prompt.get([{
     message: "Name can contain only letters, numbers and underline(_) and must start with a letter.",
     required: true
 }, {
-    name: "api_server",
-    description: "Faceall service API server url (with version)",
-    type: "string",
-    default: "http://api.faceall.cn/v2",
-    pattern: /^(http|https)\:\/\/[a-zA-Z][a-zA-Z0-9\.\/]+[a-zA-Z0-9]$/,
-    message: "URL must be in http:// or https:// protocal, and do not have slash(/) at the end.",
-    required: true
-}, {
-    name: "api_key",
-    description: "Faceall service API Key",
-    type: "string",
-    default: "KUYVaAd06zoWfBFS2M9N6qfGKgVS1v7Ckx1cPnhQ",
-    pattern: /^[a-zA-Z0-9]+$/,
-    message: "Key can contain only letters and numbers.",
-    required: true
-}, {
-    name: "api_secret",
-    description: "Faceall service API Secret",
-    type: "string",
-    default: "4uSTnMDZqXqurWa4JwLT6YsSti4cth6R0K0JcdsL",
-    pattern: /^[a-zA-Z0-9]+$/,
-    message: "Secret can contain only letters and numbers.",
-    required: true
-}, {
-    name: "compare_score_threshold",
+    name: "recognize_score_threshold",
     description: "The threshold of score to judge the compare result",
     type: "number",
     default: 0.8,
@@ -83,13 +59,9 @@ prompt.get([{
             "password": result.db_password,
             "dbname": result.db_dbname
         },
-        "api": {
-            "server": result.api_server,
-            "key": result.api_key,
-            "secret": result.api_secret
-        },
-        "compare": {
-            "score_threshold": result.compare_score_threshold
+        "recognize": {
+            "score_threshold": result.recognize_score_threshold,
+            "feature_length": 512
         }
     };
     fs.writeFile(path.join(__dirname, '../config.json'), JSON.stringify(result_obj, null, 4), function() {

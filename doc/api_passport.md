@@ -45,15 +45,10 @@ Passport接口负责来访者的注册和登录。
   "status": 0,
   "meta": {
     "visitor": {
-      "_id": "56eaaa3596aaa9e1079cc45f",
+      "_id": "56ecf434599e537d09b7622d",
       "cid": "来访者的身份证号",
       "name": "来访者姓名",
-      "faceId": "来访者的证件照中检测出的脸的id",
-      "__v": 0,
-      "validPeriod": {
-        "end": "2016-03-18T16:00:00.000Z",
-        "start": "2016-03-17T16:00:00.000Z"
-      }
+      "photo": "/public/uploads/6048f2b0-ed9d-11e5-995c-0fdbf0e5d21f.jpg"
     }
   }
 }
@@ -66,22 +61,6 @@ Passport接口负责来访者的注册和登录。
 {
     "status": 9999,
     "message": "unknown error",
-    "meta": {}
-}
-```
-即时照片中没有检测到脸
-```json
-{
-    "status": 1001,
-    "message": "could not detect any face in photo",
-    "meta": {}
-}
-```
-身份证照片中没有检测到脸
-```json
-{
-    "status": 1002,
-    "message": "could not detect any face in portrait",
     "meta": {}
 }
 ```

@@ -6,7 +6,10 @@
     "_id" : "内部id",
     "cid" : "18位身份证号",
     "name" : "来访者姓名",
-    "faceId" : "从其证件照中提取的脸的id",
+    "face" : {
+        "feature": [特征向量],
+        "imagePath": 存储在 public/uploads/ 目录下的身份证照片文件名
+    },
     "validPeriod" : {
         "end" : ISODate("有效期止"),
         "start" : ISODate("有效期起")
@@ -26,24 +29,13 @@
 }
 ```
 
-### Image：图片
-```json
-{
-    "_id" : "内部id",
-    "apiId" : "FaceAll API 服务 中的图片id",
-    "faceIds" : [ // 检测出的脸
-        "uDlQuXYEs6yyHQWSaVMPlHM4yXPL0sTjqmZyecFO"
-    ]
-}
-```
-
 ### VisitHistory：验证通关记录
 ```json
 {
     "_id" : "内部id",
     "visitorId" : "来访者的内部id",
     "placeId" : "验证地点的内部id",
-    "imageId" : "验证时用的即时照片的内部id",
+    "imagePath": 存储在 public/uploads/ 目录下的即时照片文件名,
     "time" : ISODate("验证通关时间"),
 }
 ```
@@ -54,7 +46,7 @@
     "_id" : "内部id",
     "visitorId" : "来访者的内部id",
     "placeId" : "注册地点的内部id",
-    "imageId" : "注册时用的身份证照片的内部id",
+    "imagePath": 存储在 public/uploads/ 目录下的注册所用身份证照片文件名,
     "time" : ISODate("注册时间"),
 }
 ```
