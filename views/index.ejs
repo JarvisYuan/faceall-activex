@@ -17,7 +17,6 @@
         <script src="/javascripts/faceall-activex.min.js"></script>
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
         <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     </head>  
     <body>
         <div class="header" id="home">
@@ -25,11 +24,12 @@
                 <div class="container">
                     <nav class="navbar navbar-default bg">
                         <!-- Brand and toggle get grouped for better mobile display -->
-                          <div class="logo">
-                              <a href="index.html">Face<span>-All</span></a>
+                        <div class="logo">
+                            <a href="index.html">Face<span>-All</span></a>
                         </div>
                         <div class="navbar-header">
-                          <button type="button" class="navbar-toggle collapsed mod" data-toggle="collapse"                                  data-target="#bs-example-navbar-collapse-1">
+                          <button type="button" class="navbar-toggle collapsed mod" data-toggle="collapse"                                  
+                          data-target="#bs-example-navbar-collapse-1">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar wt"></span>
                             <span class="icon-bar wt"></span>
@@ -41,64 +41,40 @@
                           <ul class="nav navbar-nav navbar-right navigate">
                             <li><a href="#about" class="scroll">ABOUT</a></li>
                             <li><a href="#services" class="scroll">SERVICES</a></li>
-                            <li><a href="#projects" class="scroll">PROJECTS</a></li>
+                            <li><a href="#Solutions" class="scroll">SOLUTIONS</a></li>
                             <li><a href="#contact" class="scroll">CONTACT</a></li>
                           </ul>
                         </div><!-- /.navbar-collapse -->
-                          <div class="clearfix"></div>
                     </nav>
-                <!--start-smoth-scrolling-->
-                <script type="text/javascript">
-                    jQuery(document).ready(function($) {
-                        $(".scroll").click(function(event){   
-                            event.preventDefault();
-                            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-                        });
-                    });
-                </script>
-                <!--start-smoth-scrolling-->
-            <div class="clear"></div>
             </div>
          </div>
             <div class="banner-slider">
-                <script>
-                    $(function () {
-                      $("#slider").responsiveSlides({
-                        auto: true,
-                        nav: true,
-                        speed: 500,
-                        namespace: "callbacks",
-                        pager: true,
-                      });
-                    });
-                  </script>
-                  </script>
                 <div class="slider">
                     <div class="callbacks_container">
                       <ul class="rslides" id="slider">
                         <li>
                           <img src="images/1.jpg" alt="" class="img-responsive" />
                           <div class="caption chn">
-                            <h3>WE ARE Face-All CREATIVE SOLUTIONS</h3>
+                            <h3>We are Face-All</h3>
                             <p>We Believe in Simple and Effective Solutions that Pays!</p>
-                            <a class="morebtn" href="#">LEARN MORE</a>
+                            <a class="morebtn" href="#about">LEARN MORE</a>
                           </div>
                         </li>
                         <li>
                           <img src="images/2.jpg" alt="" class="img-responsive" />
                             <div class="caption chn">
-                             <h3>HEADING2 HERE</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <a class="morebtn" href="#">LEARN MORE</a>
+                            <h3>CREATIVE SOLUTIONS</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            <a class="morebtn" href="#about">LEARN MORE</a>
                           </p>
                             </div>
                         </li>
                         <li>
                           <img src="images/3.jpg" alt="" class="img-responsive" />
                             <div class="caption chn">
-                            <h3>WE ARE Play-offs CREATIVE SOLUTIONS</h3>
-                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <a class="morebtn" href="#">LEARN MORE</a>
+                            <h3>Being a dreamer</h3>
+                            <p>but not living in a dream world.</p>
+                            <a class="morebtn" href="#about">LEARN MORE</a>
                             </div>
                         </li>
                       </ul>
@@ -113,23 +89,23 @@
                     <p>在人脸300-W的68个关键点检测上，错误率控制在5.31%，远低于目前文献中报道的6.31%。<br/>该服务可以用于人脸美图中的人脸关键点定位、医疗美容的唇线定位以及基于人脸的增强现实应用。</p>
                 </div>
                 <div class="about-grid">
-                    <div class="col-md-4 grid lft">
+                    <div class="col-md-4 grid lft" style='text-align:center'>
                         <h4>人脸检测</h4>
-                        <p>我们的人脸检测技术，在全球最具权威的人脸检测平台FDDB上达到90%，达到世界先进水平。</p>
+                        <p>我们的人脸检测技术，在全球最具权威的人脸检测平台FDDB上准确率达到了90%，达到世界先进水平。</p>
                     </div>
                     <div class="col-md-4 grid cen">
                         <h4>人脸验证(1:1)</h4>
-                        <p>在公开基准测试数据集Labeled Faces in the Wild（LFW）上准确率高于99.4%，达到世界先进水平。（同一数据集谷歌的准确率为99.65%）</p>
+                        <p>在公开基准测试数据集Labeled Faces in the Wild（LFW）上准确率高于99.4%，达到世界先进水平（同一数据集谷歌的准确率为99.65%）。</p>
                     </div>
-                    <div class="col-md-4 grid rgt">
+                    <div class="col-md-4 grid rgt" style='text-align:center'>
                         <h4>人脸搜索 (1:N)</h4>
-                        <p>在2015 Megaface人脸搜索评测中，在100万张人脸数据集的人脸搜索性能评估中，我们的一选率为64%,排名第三；谷歌的一选率为70% , 排名第二。</p>
+                        <p>在2015 Megaface人脸搜索评测中，100万张人脸数据集的人脸搜索性能评估，一选率为64%，排名第三；谷歌的一选率为70%，排名第二。</p>
                     </div>
                 <div class="clear-fix"></div>
                 </div>
             </div>
         </div>
-        <div class="deer-sollution">
+        <div class="deer-sollution" id="Solutions">
             <div class="container">
                 <h2>Face-all Solutions</h2>
                 <p>我们优化算法不只为在评测数据集上取得最优成绩，而是通过优化<br/>更贴近实际的真实场景图片，使之成为在真实情况下最优的人脸识别、图像识别引擎。</p>
@@ -142,51 +118,100 @@
                 <div class="statistics">
                     <div class="sap_tabs">  
                          <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-                              <ul class="resp-tabs-list">
-                                   <li class="resp-tab-item fs" aria-controls="tab_item-0" role="tab">                                             <span>SOUL</span></li>
-                                    <li class="resp-tab-item fs" aria-controls="tab_item-1" role="tab">
-                                    <span>TEAM-SPLITING</span></li>
-                                     <li class="resp-tab-item fs" aria-controls="tab_item-2" role="tab">                                           <span>SPORTS-MEMBERS</span></li>
-                                  <div class="clearfix"></div>
-                              </ul>            
+                            <ul class="resp-tabs-list">
+                                <li class="resp-tab-item fs" aria-controls="tab_item-0" role="tab">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>人证校验</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                                <li class="resp-tab-item fs" aria-controls="tab_item-1" role="tab">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>人脸识别</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                                <div class="clearfix"></div>
+                            </ul> 
                                 <div class="resp-tabs-container">
                                     <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-0">
-                                        <img src="images/a.jpg" alt="" class="img-responsive"/>
-                                        <h4>SOUL</h4>
-                                        <P>Place your text here. orem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. isi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
-    commodo consequat. uis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.                               </P>
-                                        <a href="#">HIRE US</a>
+                                        <div class="container-fluid">
+                                            <div class="about-grid" style="text-align:center;width:960px;margin-right:auto;margin-left:auto;">
+                                                <div class="col-md-4 grid lft" style='width:320px;text-align:center'>
+                                                    <h5>证件照片</h5>
+                                                    <canvas id="idcp" style="background:url('images/bg1.jpg');">
+                                                </div>
+                                                <div class="col-md-4 grid cen" style='width:320px;text-align:center'>
+                                                    <h5>登记照片</h5>
+                                                    <canvas class="reg" style="background:url('images/bg1.jpg');">
+                                                </div>
+                                                <div class="col-md-4 grid rgt" style='text-align:center'>
+                                                    <h5>相关信息</h5>
+                                                    <form role="form" style="width:292px;height:385px;border:2px dashed #d3d3d3;">
+                                                        <div class="form-group">
+                                                            </br><label for="place" class="col-sm-4" style="line-height:36px;">登记地点:</label>
+                                                            <div class="col-lg-8">
+                                                                <select class="form-control" id="splace">
+                                                                    <option>正门</option>
+                                                                    <option>东门</option>
+                                                                    <option>南楼</option>
+                                                                    <option>西楼</option>
+                                                                    <option>北楼</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div style="font-size:12px;padding-left:30px;text-align:left">
+                                                        </br></br>
+                                                            <p>访客姓名：</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span id="rname">朱镜元</span>               </br>
+                                                            身份证号：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span id="rcid">230711199910200016</span>   </br>
+                                                            登记时间：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span id="rtime">1999年10月20日17:32</span>  </p>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-1">
-                                        <img src="images/b.jpg" alt="" class="img-responsive"/>
-                                        <h4>TEAM-SPLITING</h4>
-                                        <p>Place your text here. orem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. isi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
-    commodo consequat. uis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.                               </p>
-                                        <a href="#">HIRE US</a>
-                                    </div>
-                                    <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-2">
-                                        <img src="images/c.jpg" alt="" class="img-responsive"/>
-                                        <h4>SPORTS-MEMBERS</h4>
-                                        <p>Place your text here. orem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. isi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
-    commodo consequat. uis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.                               </p>
-                                        <a href="#">HIRE US</a>
+                                        <div class="container-fluid">
+                                            <div class="about-grid" style="text-align:center;width:960px;margin-right:auto;margin-left:auto;">
+                                                <div class="col-md-4 grid lft" style='width:320px;text-align:center'>
+                                                    <h5>实时照片</h5>
+                                                    <canvas id="rec" style="background:url('images/bg1.jpg');">
+                                                </div>
+                                                <div class="col-md-4 grid cen" style='width:320px;text-align:center'>
+                                                    <h5>登记照片</h5>
+                                                    <canvas class="reg" style="background:url('images/bg2.jpg');">
+                                                </div>
+                                                <div class="col-md-4 grid rgt" style='text-align:center'>
+                                                    <h5>相关信息</h5>
+                                                    <form role="form" style="width:292px;height:385px;border:2px dashed #d3d3d3;">
+                                                        <div class="form-group">
+                                                            </br><label for="place" class="col-sm-4" style="line-height:36px;">验证地点:</label>
+                                                            <div class="col-lg-8">
+                                                                <select class="form-control" placeholder="请选择地点">
+                                                                    <option>正门</option>
+                                                                    <option>东门</option>
+                                                                    <option>南楼</option>
+                                                                    <option>西楼</option>
+                                                                    <option>北楼</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div style="font-size:12px;padding-left:30px;text-align:left">
+                                                        </br></br>
+                                                            <p>访客姓名：</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span id="pname">朱镜元</span>               </br>
+                                                            身份证号：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span id="pcid">230711199910200016</span>   </br>
+                                                            验证时间：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span id="ptime">1999年10月20日17:32</span>  </p>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                         </div>
-                            <script type="text/javascript">
-                                $(document).ready(function () {
-                                    $('#horizontalTab').easyResponsiveTabs({
-                                        type: 'default', //Types: default, vertical, accordion           
-                                        width: 'auto', //auto or any width like 600px
-                                        fit: true   // 100% fit in a container
-                                    });
-                                });
-                            </script> 
                     </div>
                 </div>
             </div>
         </div>
-
 
             <div class="foot-ban"> 
                 <h3><q>There is Beauty in Simplicity</q></h3>
