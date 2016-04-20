@@ -61,7 +61,12 @@ prompt.get([{
         },
         "recognize": {
             "score_threshold": result.recognize_score_threshold,
-            "feature_length": 512
+            "feature_length": 512,
+            // here comes the l2 model
+            "feature_scaler_1": -8607.96,
+            "feature_scaler_2": 2265.76,
+            "feature_logreg_1": 6.62125,
+            "feature_logreg_2": -14.0884
         }
     };
     fs.writeFile(path.join(__dirname, '../config.json'), JSON.stringify(result_obj, null, 4), function() {

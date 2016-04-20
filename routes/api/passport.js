@@ -190,25 +190,6 @@ router.post('/checkin', function(req, res, next) {
 
 module.exports = router;
 
-/**
- * save the uploaded image
- * @param  {file object} fileObj file object
- * @return {string}              the saved file name
- */
-function _cpimage(fileObj) {
-    var saveDir = path.join(__dirname, '../../public/');
-    if (!(fs.existsSync(saveDir) && fs.statSync(saveDir).isDirectory())) fs.mkdirSync(saveDir);
-    saveDir = path.join(saveDir, 'uploads/');
-    if (!(fs.existsSync(saveDir) && fs.statSync(saveDir).isDirectory())) fs.mkdirSync(saveDir);
-    var fileExd = fileObj.originalFilename.match(/^.*\.([a-zA-Z]+)$/)[1];
-    // fs.renameSync(fileObj.path, savePath);
-    imagePath = uuid.v1() + '.' + fileExd;
-    var savePath = path.join(saveDir, imagePath);
-    fileCopy(fileObj.path, savePath);
-    return imagePath;
-}
-
-
 
 
 
