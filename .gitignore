@@ -34,3 +34,4 @@ config.json
 /public/stylesheets/*
 /vendor/*.js
 /doc/*.html
+.DS_Store
