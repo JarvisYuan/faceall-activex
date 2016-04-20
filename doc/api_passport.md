@@ -22,12 +22,14 @@ Passport接口负责来访者的注册和登录。
 
 - URL：/passport/register
 - 方法：POST
-- POST参数（form-data/multipart）
+- POST参数（form-data）
     - cid: 来访者身份证号
     - name: 来访者姓名
     - placeid: 注册地点的`_id`
-    - portrait: 读入的身份证照片
-    - photo: 即时拍摄的照片
+    - portrait_imgpath: 读入的身份证照片上传路径
+    - photo_imgpath: 即时拍摄的照片上传路径
+    - photo_feature: 读入的身份证照片脸特征向量
+    - portrait_feature: 即时拍摄的照片脸特征向量
 
 ### 验证
 
@@ -35,9 +37,10 @@ Passport接口负责来访者的注册和登录。
 
 - URL：/passport/checkin
 - 方法：POST
-- POST参数（form-data/multipart）
+- POST参数（form-data）
     - placeid: 验证地点的`_id`
-    - photo: 即时拍摄的照片
+    - photo_imgpath: 即时拍摄的照片上传路径
+    - photo_feature: 读入的身份证照片脸特征向量
 - 成功时的返回信息：
 ```json
 {

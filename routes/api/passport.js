@@ -24,8 +24,8 @@ router.post('/register', function(req, res, next) {
                 && fields.placeid && fields.cid[0]
                 && fields.photo_feature && fields.photo_feature[0]
                 && fields.portrait_feature && fields.portrait_feature[0]
-                && files['photo'] && (files['photo'].length > 0)
-                && files['portrait'] && (files['portrait'].length > 0))) {
+                && fields.photo_imgpath && fields.photo_imgpath[0]
+                && fields.portrait_imgpath && fields.portrait_imgpath[0])) {
             res.sendStatus(400);
             return;
         }
@@ -44,9 +44,7 @@ router.post('/register', function(req, res, next) {
         }
         var today = new Date();
         VisitorModel.findOne({
-            "cid": cid,
-            "validPeriod.start": { "$lte": today },
-            "validPeriod.end": { "$gt": today }
+            "cid": cid
         }, {}, function(err, visitor) {
             if (err) {
                 new CommonError("An error occured when register", {error: err}).print();
@@ -66,12 +64,9 @@ router.post('/register', function(req, res, next) {
                                 // photo: the photo taken by camera
                                 // portrait: the photo on the id-card
                                 if (place.roles.indexOf('o2o') >= 0) {
-                                    var photoFile = files['photo'][0];
-                                    var portraitFile = files['portrait'][0];
-                                    var fileObj = files['photo'][0];
                                     if (service.verifyFace(portrait_feature, photo_feature)) {
-                                        var photoPath = _cpimage(files['photo'][0]);
-                                        var portraitPath = _cpimage(files['portrait'][0]);
+                                        var photoPath = fields.photo_imgpath[0];
+                                        var portraitPath = fields.portrait_imgpath[0];
                                         if (visitor) {
                                             visitor.validPeriod.start = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()).getTime();
                                             visitor.validPeriod.end = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() + 1).getTime();
@@ -131,7 +126,9 @@ router.post('/register', function(req, res, next) {
 router.post('/checkin', function(req, res, next) {
     var form = new multiparty.Form();
     form.parse(req, function (err, fields, files) {
-        if (!(fields.placeid && fields.placeid[0] && files['photo'] && (files['photo'].length > 0) && fields.photo_feature && fields.photo_feature[0])) {
+        if (!(fields.placeid && fields.placeid[0] 
+                && fields.photo_imgpath && fields.photo_imgpath[0]
+                && fields.photo_feature && fields.photo_feature[0])) {
             res.sendStatus(400);
             return;
         }
@@ -151,7 +148,7 @@ router.post('/checkin', function(req, res, next) {
             } else {
                 if (place) {
                     if (place.roles.indexOf('o2n') >= 0) {
-                        var photoPath = _cpimage(files['photo'][0]);
+                        var photoPath = fields.photo_imgpath[0];
                         var today = new Date();
                         VisitorModel.find({
                             "validPeriod.start": { "$lte": today },
