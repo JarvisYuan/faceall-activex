@@ -6,8 +6,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="人脸识别, 人脸搜索" />
         <!--fonts-->
-        <link href="http://fonts.useso.com/css?family=Audiowide" rel="stylesheet" type="text/css">
-        <link href="http://fonts.useso.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+        <!-- <link href="http://fonts.useso.com/css?family=Audiowide" rel="stylesheet" type="text/css">
+        <link href="http://fonts.useso.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css"> -->
         <!-- 新 Bootstrap 核心 CSS 文件 -->
         <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
         <!--custom-css-->
@@ -122,7 +122,7 @@
                                 <li class="resp-tab-item fs" aria-controls="tab_item-0" role="tab">
                                     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>人证校验</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
                                 <li class="resp-tab-item fs" aria-controls="tab_item-1" role="tab">
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>人脸识别</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>人脸识别</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
                                 <div class="clearfix"></div>
                             </ul> 
                                 <div class="resp-tabs-container">
@@ -138,28 +138,38 @@
                                                     <canvas class="reg" style="background:url('images/bg1.jpg');">
                                                 </div>
                                                 <div class="col-md-4 grid rgt" style='text-align:center'>
-                                                    <h5>相关信息</h5>
-                                                    <form role="form" style="width:292px;height:385px;border:2px dashed #d3d3d3;">
+                                                    <form role="form" style="width:292px;height:385px;">
                                                         <div class="form-group">
-                                                            </br><label for="place" class="col-sm-4" style="line-height:36px;">登记地点:</label>
+                                                            </br></br><label for="place" class="col-sm-4" style="line-height:32px;">登记地点:</label>
                                                             <div class="col-lg-8">
-                                                                <select class="form-control" id="splace">
-                                                                    <option>正门</option>
-                                                                    <option>东门</option>
-                                                                    <option>南楼</option>
-                                                                    <option>西楼</option>
-                                                                    <option>北楼</option>
+                                                                </br><select id="rplace" class="form-control selpla">
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div style="font-size:12px;padding-left:30px;text-align:left">
-                                                        </br></br>
-                                                            <p>访客姓名：</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <span id="rname">朱镜元</span>               </br>
-                                                            身份证号：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <span id="rcid">230711199910200016</span>   </br>
-                                                            登记时间：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <span id="rtime">1999年10月20日17:32</span>  </p>
+                                                        <div class="form-group">
+                                                            <label for="rname" class="col-sm-4" style="line-height:32px;">访客姓名:</label>
+                                                            <div class="col-lg-8" >
+                                                                </br><input type="text" class="form-control" id="rname" 
+                                                                    readonly="readonly" placeholder="访客姓名">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="rcid" class="col-sm-4" style="line-height:32px;">身份证号:</label>
+                                                            <div class="col-lg-10" style="float:right;">
+                                                                <input type="text" class="form-control" id="rcid" 
+                                                                    readonly="readonly" placeholder="身份证号" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="rtime" class="col-sm-4" style="line-height:32px;">登记时间:</label>
+                                                            <div class="col-lg-10" style="float:right;">
+                                                                <input type="text" class="form-control" id="rtime"
+                                                                    readonly="readonly" placeholder="登记时间" >
+                                                            </div>
+                                                        </div>
+                                                        <div style="padding-top:275px;">
+                                                        <button type="button" id="rbtn" class="btn btn-default">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -168,40 +178,31 @@
                                     </div>
                                     <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-1">
                                         <div class="container-fluid">
-                                            <div class="about-grid" style="text-align:center;width:960px;margin-right:auto;margin-left:auto;">
-                                                <div class="col-md-4 grid lft" style='width:320px;text-align:center'>
+                                            <div class="about-grid" style="text-align:center;width:960px;margin-right:auto;margin-left:auto;padding-left:auto;padding-right:auto;">
+                                                <div class="col-md-4 grid lft" style='width:320px;text-align:center;'>
                                                     <h5>实时照片</h5>
                                                     <canvas id="rec" style="background:url('images/bg1.jpg');">
                                                 </div>
-                                                <div class="col-md-4 grid cen" style='width:320px;text-align:center'>
-                                                    <h5>登记照片</h5>
-                                                    <canvas class="reg" style="background:url('images/bg2.jpg');">
-                                                </div>
-                                                <div class="col-md-4 grid rgt" style='text-align:center'>
-                                                    <h5>相关信息</h5>
-                                                    <form role="form" style="width:292px;height:385px;border:2px dashed #d3d3d3;">
+                                                <div class="col-md-4 grid cen" style='width:240px;text-align:left'>
+                                                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+                                                    <form role="form">
                                                         <div class="form-group">
-                                                            </br><label for="place" class="col-sm-4" style="line-height:36px;">验证地点:</label>
-                                                            <div class="col-lg-8">
-                                                                <select class="form-control" placeholder="请选择地点">
-                                                                    <option>正门</option>
-                                                                    <option>东门</option>
-                                                                    <option>南楼</option>
-                                                                    <option>西楼</option>
-                                                                    <option>北楼</option>
+                                                            </br></br></br></br></br>
+                                                            <b>&nbsp;&nbsp;&nbsp;&nbsp;验证地点:</b></br></br>
+                                                            <div class="col-lg-10">
+                                                                <select id="cplace" class="form-control selpla">
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div style="font-size:12px;padding-left:30px;text-align:left">
-                                                        </br></br>
-                                                            <p>访客姓名：</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <span id="pname">朱镜元</span>               </br>
-                                                            身份证号：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <span id="pcid">230711199910200016</span>   </br>
-                                                            验证时间：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <span id="ptime">1999年10月20日17:32</span>  </p>
+                                                        <div style="padding-top:50px;">
+                                                        <button type="button" id="cbtn" class="btn btn-default">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                         </div>
                                                     </form>
+                                                </div>
+                                                <div class="col-md-4 grid rgt" style='width:320px;text-align:center'>
+                                                    <h5>登记照片</h5>
+                                                    <canvas class="reg" style="background:url('images/bg2.jpg');">
                                                 </div>
                                             </div>
                                         </div>
