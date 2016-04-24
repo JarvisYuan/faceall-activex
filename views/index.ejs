@@ -131,11 +131,11 @@
                                             <div class="about-grid" style="text-align:center;width:960px;margin-right:auto;margin-left:auto;">
                                                 <div class="col-md-4 grid lft" style='width:320px;text-align:center'>
                                                     <h5>证件照片</h5>
-                                                    <canvas id="idcp" style="background:url('images/bg1.jpg');">
+                                                    <canvas id="ridp" style="background:url('images/bg1.jpg');">
                                                 </div>
                                                 <div class="col-md-4 grid cen" style='width:320px;text-align:center'>
                                                     <h5>登记照片</h5>
-                                                    <canvas class="reg" style="background:url('images/bg1.jpg');">
+                                                    <canvas id="rpic" style="background:url('images/bg1.jpg');">
                                                 </div>
                                                 <div class="col-md-4 grid rgt" style='text-align:center'>
                                                     <form role="form" style="width:292px;height:385px;">
@@ -178,34 +178,37 @@
                                     </div>
                                     <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-1">
                                         <div class="container-fluid">
-                                            <div class="about-grid" style="text-align:center;width:960px;margin-right:auto;margin-left:auto;padding-left:auto;padding-right:auto;">
-                                                <div class="col-md-4 grid lft" style='width:320px;text-align:center;'>
-                                                    <h5>实时照片</h5>
-                                                    <canvas id="rec" style="background:url('images/bg1.jpg');">
+                                            <div class="about-grid" style="text-align:center;width:900px;margin:auto;">
+                                                <div class="col-md-4 grid lft" style="margin-left:160px;">
+                                                    <div style='width:320px;text-align:center;'>
+                                                        <h5>实时照片</h5>
+                                                        <canvas id="rec" style="background:url('images/bg1.jpg');">
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-4 grid cen" style='width:240px;text-align:left'>
-                                                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-                                                    <form role="form">
-                                                        <div class="form-group">
-                                                            </br></br></br></br></br>
-                                                            <b>&nbsp;&nbsp;&nbsp;&nbsp;验证地点:</b></br></br>
-                                                            <div class="col-lg-10">
-                                                                <select id="cplace" class="form-control selpla">
-                                                                </select>
+                                                <div class="col-md-4 grid rgt">
+                                                    <div style="width:320px;text-align:left;">
+                                                        <form role="form">
+                                                            <div class="form-group" style="padding-top:120px;padding-left:90px">
+                                                                <b>&nbsp;&nbsp;&nbsp;&nbsp;验证地点:</b></br></br>
+                                                                <div class="col-lg-10">
+                                                                    <select id="cplace" class="form-control selpla">
+                                                                    </select>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div style="padding-top:50px;">
-                                                        <button type="button" id="cbtn" class="btn btn-default">
-                                                            &nbsp;&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="col-md-4 grid rgt" style='width:320px;text-align:center'>
-                                                    <h5>登记照片</h5>
-                                                    <canvas class="reg" style="background:url('images/bg2.jpg');">
+                                                            <div style="padding-top:60px;padding-left:220px;">
+                                                                <button type="button" id="cbtn" class="btn btn-default">
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                                                                </br></br>
+                                                                <button type="button" id="tc1" class="btn btn-default">
+                                                                    ----弹窗----</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                         </div>
@@ -214,37 +217,74 @@
             </div>
         </div>
 
-            <div class="foot-ban"> 
-                <h3><q>There is Beauty in Simplicity</q></h3>
-            </div>
-            <div class="contact" id="contact">
-                <h3>Contact</h3>
-                <p>Zhang,J.Z &nbsp; &amp; &nbsp; J.Y.Zhu &nbsp;&nbsp;&nbsp;BUPT</p>
-            </div>
-            <!--footer-->
-            <div class="footer" id="foot">
-                <div class="container">
-                    <div class="col-md-3 logo flt">
-                        <a href="#">Face<span>-All</span></a>
-                    </div>
-                    <div class="col-md-6 cpyrt fltt">
-                        <p>Copyright &copy; 2015.Face-All All rights reserved.</p>
-                    </div>
-                    <div class="col-md-3 flt">
-                        <div class="social">
-                            <ul>
-                                <li><a href="#" class="face"></a></li>
-                                <li><a href="#" class="twit"></a></li>
-                                <li><a href="#" class="in"></a></li>
-                                <li><a href="#" class="gpls"></a></li>
-                                <li><a href="#" class="del"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
+        <div id="gray"></div>
+        <div class="fpopup">
+            <div class="top_nav" id='top_nav'>
+                <div align="center">
+                    <i></i>
+                    <span>验证成功</span>
+                    <a class="guanbi"></a>
                 </div>
             </div>
-            <!--footer-->
+            <div class="min">
+                <div class="tc_login">
+                    <div class="left">
+                        <div align="center">
+                            <img id="crpic" src="images/bg2.jpg" />
+                        </div>
+                    </div>
+                    <div class="right">
+                        <form name="form_login" target="_top">
+                            <div style="font-size:16px;padding-left:20px;text-align:left">
+                            </br></br>
+                                <p>访客姓名：</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span id="cname">许魏洲</span>               </br></br>
+                                身份证号：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span id="ccid">230711199710200016</span>   </br></br>
+                                登记时间：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span id="ctime">1999年10月20日17:32</span>  </p></br></br>
+                            </div>
+                            <div style="padding-left:120px">
+                            <button type="button" id="conbtn" class="btn btn-default">
+                                &nbsp;&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            </div>
+                        </form>   
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="foot-ban"> 
+            <h3><q>There is Beauty in Simplicity</q></h3>
+        </div>
+        <div class="contact" id="contact">
+            <h3>Contact</h3>
+            <p>Zhang,J.Z &nbsp; &amp; &nbsp; J.Y.Zhu &nbsp;&nbsp;&nbsp;BUPT</p>
+        </div>
+        <!--footer-->
+        <div class="footer" id="foot">
+            <div class="container">
+                <div class="col-md-3 logo flt">
+                    <a href="#">Face<span>-All</span></a>
+                </div>
+                <div class="col-md-6 cpyrt fltt">
+                    <p>Copyright &copy; 2015.Face-All All rights reserved.</p>
+                </div>
+                <div class="col-md-3 flt">
+                    <div class="social">
+                        <ul>
+                            <li><a href="#" class="face"></a></li>
+                            <li><a href="#" class="twit"></a></li>
+                            <li><a href="#" class="in"></a></li>
+                            <li><a href="#" class="gpls"></a></li>
+                            <li><a href="#" class="del"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!--footer-->
 <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
     </body>
 </html>

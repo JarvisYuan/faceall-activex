@@ -81,13 +81,12 @@ $(document).ready(function(){
     });
 });
 
-//获取注册时间  --事件触发待改（刷身份证）
-var iDate = new Date()
-var iTime = iDate.getFullYear() + "-" + iDate.getMonth() + "-" + iDate.getDate() 
-+ "  " + iDate.getHours() + ":" + iDate.getMinutes()
-
+//获取注册时间 --事件触发待改（刷身份证）
 $(document).ready(function(){
     $("#rbtn").click(function(){
+        var iDate = new Date()
+        var iTime = iDate.getFullYear() + "-" + iDate.getMonth() + "-" + iDate.getDate() 
+        + "  " + iDate.getHours() + ":" + iDate.getMinutes()
         $("#rtime").val(iTime);
     });
 });
@@ -96,7 +95,6 @@ $(document).ready(function(){
 function ErrorTips(msg){
     var alms= msg.message
     switch (msg.status){
-        case 0: alert(alms);break;
         case 1001: alert(alms);break;
         case 1002: alert(alms);break;
         case 1003: alert(alms);break;
@@ -113,28 +111,35 @@ function ErrorTips(msg){
 //上传注册信息   (if验证表单)
 $(document).ready(function(){
     $("#rbtn").click(function(){
-        $.ajax({
-            type:"POST",
-            url:"/passport/register",
-            contentType: "application/json; charset=utf-8",
-            dataType:"json",
-            data: JSON.stringify({
-                "name" : $("#rname").val(),
-                "cid" : $("#rcid").val(),
-                "placeid" : $("#rplace").val(),
-                "photo" : "即时拍摄的照片Base64",
-                "faceFeature" : "从即时照片中提取的脸的feature"
-            }),
-            success: function(){
-                alert("登记成功");
-            },
-            error: function(remsg){  //(rmsg)删?
-                ErrorTips(remsg);
-            },
-            complete: function(){  //功能待修正
-                $("#rname,#rcid,#rtime").empty();
-            }
-        });
+        if ( !$("#rcid").val()) {
+            alert("请完善注册信息后，再提交登记！");
+            return false;
+        } else {
+            $.ajax({
+                type:"POST",
+                url:"/passport/register",
+                contentType: "application/json; charset=utf-8",
+                dataType:"json",
+                data: JSON.stringify({
+                    "name" : $("#rname").val(),
+                    "cid" : $("#rcid").val(),
+                    "placeid" : $("#rplace").val(),
+                    "portrait_imgpath" : "证件照",
+                    "portrait_feature" : "",
+                    "photo_imgpath" : "即时照片",
+                    "photo_feature" : ""
+                }),
+                success: function(){
+                    alert("登记成功");
+                },
+                error: function(remsg){  //(rmsg)删?
+                    ErrorTips(remsg);
+                },
+                complete: function(){  //img待修正
+                    $("#rname,#rcid,#rtime").empty();
+                }
+            });
+        };
     });
 });
 
@@ -147,22 +152,75 @@ $(document).ready(function(){
             contentType: "application/json; charset=utf-8",
             dataType:"json",
             data: JSON.stringify({
-                "faceFeature" : "从即时照片中提取的脸的feature",
-                "placeid" : $("#cplace").val()
+                "placeid" : $("#cplace").val(),
+                "photo_imgpath" : "即时照片",
+                "photo_feature" : ""
             }),
             success: function(cmsg){
-                $("#cname").val(cmsg.meta.name);
-                $("#ccid").val(cmsg.meta.cid);
-                $("#ctime").val(iTime);
-                alert("验证成功");
+                    $("#cname").val(cmsg.meta.visitor.name);
+                    $("#ccid").val(cmsg.meta.visitor.cid );
+                    $("#ctime").val(cmsg.meta.visitor.validPeriod.start);
+                    $("#crpic").attr("src","data:image/jpg;base64," + cmsg.meta.visitor.photo);
+                    $("#gray").show();
+                    $(".fpopup").show();  //弹出验证结果窗口
+                    tc_center();
             },
             error: function(cemsg){
                 ErrorTips(cemsg);
             },
             complete:function(){
-                $("#cname,#ccid,#ctime").empty();
+                $("#crpic,#cname,#ccid,ctime").empty();
             }
         });
     });
 });
+
+//临时触发显示隐藏窗口
+$(document).ready(function(){
+    $("#tc1").click(function(){
+        $("#gray").show();
+        $(".fpopup").show();//查找ID为fpopup的DIV show()显示#gray
+        tc_center();
+    });
+});
+
+//定义函数 弹出窗口水平居中
+function tc_center(){
+    _top=($(window).height()-$(".fpopup").height())/2;
+    _left=($(window).width()-$(".fpopup").width())/2;
+    $(".fpopup").css({top:_top,left:_left});
+};
+$(window).resize(function(){
+    tc_center();
+});
+
+//鼠标移动窗口
+$(document).ready(function(){ 
+    $(".top_nav").mousedown(function(e){ 
+        var x = e.screenX;//获得鼠标指针相对bom的x坐标
+        var y = e.screenY;//获得鼠标指针相对bom的y坐标
+        $(this).css("cursor","move");//改变鼠标指针的形状 
+        $(document).bind("mousemove",function(ev){ 
+        //绑定鼠标的移动事件，因为光标在DIV元素外面也要有效果，所以要用doucment的事件，而不用DIV元素的事件
+            $(".fpopup").stop();//加上这个之后 
+            var _x = ev.screenX - x + _left;//获得X轴方向移动后的坐标 
+            var _y = ev.screenY - y + _top;//获得Y轴方向移动后的坐标
+            $(".fpopup").animate({left:_x+"px",top:_y+"px"},10); 
+        }); 
+    }); 
+    $(document).mouseup(function() { 
+        $(".fpopup").css("cursor","default"); 
+        $(this).unbind("mousemove"); 
+    });
+});
+
+//隐藏验证结果窗口,并清空访客信息
+$(document).ready(function(){
+    $("a.guanbi,#conbtn").click(function(event){
+        $("#gray").hide();
+        $(".fpopup").hide();
+        $("#cname,#ccid,#ctime").empty();
+    });
+});
+
 
