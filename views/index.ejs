@@ -89,7 +89,7 @@
                     <p>在人脸300-W的68个关键点检测上，错误率控制在5.31%，远低于目前文献中报道的6.31%。<br/>该服务可以用于人脸美图中的人脸关键点定位、医疗美容的唇线定位以及基于人脸的增强现实应用。</p>
                 </div>
                 <div class="about-grid">
-                    <div class="col-md-4 grid lft" style='text-align:center'>
+                    <div class="col-md-4 grid lft descoo">
                         <h4>人脸检测</h4>
                         <p>我们的人脸检测技术，在全球最具权威的人脸检测平台FDDB上准确率达到了90%，达到世界先进水平。</p>
                     </div>
@@ -97,7 +97,7 @@
                         <h4>人脸验证(1:1)</h4>
                         <p>在公开基准测试数据集Labeled Faces in the Wild（LFW）上准确率高于99.4%，达到世界先进水平（同一数据集谷歌的准确率为99.65%）。</p>
                     </div>
-                    <div class="col-md-4 grid rgt" style='text-align:center'>
+                    <div class="col-md-4 grid rgt descoo">
                         <h4>人脸搜索 (1:N)</h4>
                         <p>在2015 Megaface人脸搜索评测中，100万张人脸数据集的人脸搜索性能评估，一选率为64%，排名第三；谷歌的一选率为70%，排名第二。</p>
                     </div>
@@ -117,59 +117,59 @@
                 <h3>Services</h3>
                 <div class="statistics">
                     <div class="sap_tabs">  
-                         <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                         <div id="horizontalTab">
                             <ul class="resp-tabs-list">
                                 <li class="resp-tab-item fs" aria-controls="tab_item-0" role="tab">
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>人证校验</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                                    <span><b>人证校验</b></span></li>
                                 <li class="resp-tab-item fs" aria-controls="tab_item-1" role="tab">
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>人脸识别</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                                    <span><b>人脸识别</b></span></li>
                                 <div class="clearfix"></div>
                             </ul> 
                                 <div class="resp-tabs-container">
                                     <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-0">
                                         <div class="container-fluid">
-                                            <div class="about-grid" style="text-align:center;width:960px;margin-right:auto;margin-left:auto;">
-                                                <div class="col-md-4 grid lft" style='width:320px;text-align:center'>
+                                            <div id="regmsg" class="about-grid">
+                                                <div class="col-md-4 grid lft">
                                                     <h5>证件照片</h5>
                                                     <canvas id="ridp" style="background:url('images/bg1.jpg');">
                                                 </div>
-                                                <div class="col-md-4 grid cen" style='width:320px;text-align:center'>
+                                                <div class="col-md-4 grid cen">
                                                     <h5>登记照片</h5>
                                                     <canvas id="rpic" style="background:url('images/bg1.jpg');">
                                                 </div>
-                                                <div class="col-md-4 grid rgt" style='text-align:center'>
-                                                    <form role="form" style="width:292px;height:385px;">
+                                                <div class="col-md-4 grid rgt">
+                                                    <form role="form" id="regform">
                                                         <div class="form-group">
-                                                            </br></br><label for="place" class="col-sm-4" style="line-height:32px;">登记地点:</label>
+                                                            <label for="place" class="col-sm-4">登记地点:</label>
                                                             <div class="col-lg-8">
                                                                 </br><select id="rplace" class="form-control selpla">
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="rname" class="col-sm-4" style="line-height:32px;">访客姓名:</label>
-                                                            <div class="col-lg-8" >
+                                                        <div class="form-group" id="regf1">
+                                                            <label for="rname" class="col-sm-4">访客姓名:</label>
+                                                            <div class="col-lg-8">
                                                                 </br><input type="text" class="form-control" id="rname" 
                                                                     readonly="readonly" placeholder="访客姓名">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="rcid" class="col-sm-4" style="line-height:32px;">身份证号:</label>
-                                                            <div class="col-lg-10" style="float:right;">
+                                                            <label for="rcid" class="col-sm-4">身份证号:</label>
+                                                            <div class="col-lg-10 florgt">
                                                                 <input type="text" class="form-control" id="rcid" 
                                                                     readonly="readonly" placeholder="身份证号" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="rtime" class="col-sm-4" style="line-height:32px;">登记时间:</label>
-                                                            <div class="col-lg-10" style="float:right;">
+                                                            <label for="rtime" class="col-sm-4">登记时间:</label>
+                                                            <div class="col-lg-10 florgt">
                                                                 <input type="text" class="form-control" id="rtime"
                                                                     readonly="readonly" placeholder="登记时间" >
                                                             </div>
                                                         </div>
-                                                        <div style="padding-top:275px;">
-                                                        <button type="button" id="rbtn" class="btn btn-default">
-                                                            &nbsp;&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                                        <div id="btn1">
+                                                        <button type="button" id="rbtn" class="btn btn-block btn-default">
+                                                            确认</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -178,37 +178,31 @@
                                     </div>
                                     <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-1">
                                         <div class="container-fluid">
-                                            <div class="about-grid" style="text-align:center;width:900px;margin:auto;">
-                                                <div class="col-md-4 grid lft" style="margin-left:160px;">
-                                                    <div style='width:320px;text-align:center;'>
-                                                        <h5>实时照片</h5>
-                                                        <canvas id="rec" style="background:url('images/bg1.jpg');">
-                                                    </div>
+                                            <div id="chemsg" class="about-grid">
+                                                <div id="che1" class="col-md-4 grid lft">
+                                                    <h5>实时照片</h5>
+                                                    <canvas id="rec" style="background:url('images/bg1.jpg');">
                                                 </div>
-                                                <div class="col-md-4 grid rgt">
-                                                    <div style="width:320px;text-align:left;">
-                                                        <form role="form">
-                                                            <div class="form-group" style="padding-top:120px;padding-left:90px">
-                                                                <b>&nbsp;&nbsp;&nbsp;&nbsp;验证地点:</b></br></br>
-                                                                <div class="col-lg-10">
-                                                                    <select id="cplace" class="form-control selpla">
-                                                                    </select>
-                                                                </div>
+                                                <div class="col-md-6 grid rgt">
+                                                    <form role="form">
+                                                        <div class="form-group" id="chef1">
+                                                                <b>验证地点:</b></br></br>
+                                                            <div class="col-lg-6">
+                                                                <select id="cplace" class="form-control selpla">
+                                                                </select>
                                                             </div>
-                                                            <div style="padding-top:60px;padding-left:220px;">
-                                                                <button type="button" id="cbtn" class="btn btn-default">
-                                                                &nbsp;&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;&nbsp;</button>
-
-                                                                </br></br>
-                                                                <button type="button" id="tc1" class="btn btn-default">
-                                                                    ----弹窗----</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
+                                                        </div>
+                                                        <div id="chef2">
+                                                            <button type="button" id="cbtn" class="btn btn-default btn-block">
+                                                                确认</button>
+                                                            </br></br>
+                                                            <button type="button" id="tc1" class="btn btn-block btn-default">
+                                                                弹窗</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
+                                        </div>    
                                     </div>
                                 </div>
                         </div>
@@ -222,7 +216,7 @@
             <div class="top_nav" id='top_nav'>
                 <div align="center">
                     <i></i>
-                    <span>验证成功</span>
+                    <span><b>验证成功</b></span>
                     <a class="guanbi"></a>
                 </div>
             </div>
@@ -235,18 +229,23 @@
                     </div>
                     <div class="right">
                         <form name="form_login" target="_top">
-                            <div style="font-size:16px;padding-left:20px;text-align:left">
-                            </br></br>
-                                <p>访客姓名：</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <span id="cname">许魏洲</span>               </br></br>
-                                身份证号：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <span id="ccid">230711199710200016</span>   </br></br>
-                                登记时间：   </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <span id="ctime">1999年10月20日17:32</span>  </p></br></br>
+                            <div id="checkmsg" >
+                                <p>访客姓名：</p>
+                                <div>
+                                    <span id="cname">许魏洲</span>&nbsp;
+                                </div>
+                                <p>身份证号：</p>
+                                <div>
+                                    <span id="ccid">230711199710200016</span>&nbsp;
+                                </div>
+                                <p>登记时间：</p>
+                                <div>
+                                    <span id="ctime">1999年10月20日17:32</span>&nbsp;
+                                </div>
                             </div>
-                            <div style="padding-left:120px">
-                            <button type="button" id="conbtn" class="btn btn-default">
-                                &nbsp;&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            <div>
+                            <button type="button" id="conbtn" class="btn btn-block btn-default">
+                                确认</button>
                             </div>
                         </form>   
                     </div>
