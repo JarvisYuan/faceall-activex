@@ -1936,10 +1936,7 @@ li.grid-1_right p{
 /* service */
 
 canvas {
-    width: 292px;
-    height: 385px;
     border: 2px dashed #d3d3d3;
-    background:url('images/bg1.jpg');
 }
 
 div.descoo {

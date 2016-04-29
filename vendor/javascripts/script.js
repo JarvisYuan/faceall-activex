@@ -109,7 +109,7 @@ function ErrorTips(msg){
 };
 
 
-
+//helper = new ActiveXObject("FaceallPlugin.DispFaceallHelper");
 var plugin = new FaceallPlugin(document.getElementById('myactivex'));
 var im = null;
 features = [];
@@ -149,6 +149,27 @@ plugin.onCameraFrame = function (_im) {
     };
 };
 
+plugin.onCameraClosed = function () {
+    if (im) {
+        var ftr = plugin.faceallExtractFeature(im);
+        features.push(ftr);
+        if (features.length > 1) {
+            feature1 = features[features.length - 2];
+            feature2 = features[features.length - 1];
+            score = plugin.faceallCompareFeatures(feature1, feature2);
+        }
+    }
+    if (im) {
+        plugin.uploadImage("http://192.168.1.110:3000/api/common/upload", im, function (res) {
+            alert("Image uploaded:" + res);
+        }, function () {
+            alert("Image upload failed.");
+        });
+    }
+}
+
+
+
 function openReader() {
     if (!plugin.openCardReader()) alert("failed to open reader");
 }
@@ -156,7 +177,15 @@ function closeReader() {
     if (!plugin.closeCardReader()) alert("failed to close reader");
 }
 
-$("#ridp").click( openReader() );
+$("#ridp").toggle(
+    function(){
+        openReader();
+    };
+    function(){
+        closeReader();
+    };
+);
+
 
 plugin.onCard = function (info) {
     var context = drawing.getContext("2d");
@@ -166,34 +195,6 @@ plugin.onCard = function (info) {
     document.getElementById('rname').innerHTML = info.Name;
     document.getElementById('rcid').innerHTML = info.CardId;
 }
-
-
-
-//----------------------------
-//helper = new ActiveXObject("FaceallPlugin.DispFaceallHelper");
-
-plugin.onCameraClosed = function () {
-    alert("Camera Closed");
-    if (im) {
-        var ftr = plugin.faceallExtractFeature(im);
-        features.push(ftr);
-        if (features.length > 1) {
-            var f1 = features[features.length - 2];
-            var f2 = features[features.length - 1];
-            var score = plugin.faceallCompareFeatures(f1, f2);
-            alert(score);
-        }
-    }
-    if (im) {
-        plugin.uploadImage("http://192.168.1.110:3000/api/common/upload", im, function (res) {
-            alert("Uploaded:" + res);
-        }, function () {
-            alert("Upload failed");
-        });
-    }
-}
-
-//-----------------------------
 
 
 //上传注册信息   (验证表单)
@@ -213,9 +214,9 @@ $(document).ready(function(){
                     "cid" : $("#rcid").val(),
                     "placeid" : $("#rplace").val(),
                     "portrait_imgpath" : "证件照",
-                    "portrait_feature" : "",
+                    "portrait_feature" : feature1,
                     "photo_imgpath" : "即时照片",
-                    "photo_feature" : ""
+                    "photo_feature" : feature2
                 }),
                 success: function(){
                     alert("登记成功");
