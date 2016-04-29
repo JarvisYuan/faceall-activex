@@ -108,8 +108,21 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.js'
       },
       vendor: {
-        src: ['vendor/javascripts/*.js'],
-        dest: 'vendor/<%= pkg.name %>.js'
+        files: {
+          'vendor/<%= pkg.name %>.js': [
+              'vendor/javascripts/jquery.js',
+              'vendor/javascripts/bootstrap.js', 
+              'vendor/javascripts/easing.js', 
+              'vendor/javascripts/easyResponsiveTabs.js', 
+              'vendor/javascripts/move-top.js', 
+              'vendor/javascripts/plugin.js', 
+              'vendor/javascripts/script.js'
+          ],
+          'vendor/<%= pkg.name %>.css': [
+              'vendor/stylesheets/bootstrap.css',
+              'vendor/stylesheets/style.css'
+          ]
+        }
       }
     },
     uglify: {
@@ -121,22 +134,37 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.min.js'
       },
       vendor: {
-        src: '<%= concat.vendor.dest %>',
-        dest: 'vendor/<%= pkg.name %>.min.js'
+        files: {
+          'vendor/<%= pkg.name %>.min.js': 'vendor/<%= pkg.name %>.js'
+        }
+      }
+    },
+    cssmin: {
+      options: {
+        banner: '<%= banner %>'
+      },
+      vendor: {
+        files: {
+          'vendor/<%= pkg.name %>.min.css': 'vendor/<%= pkg.name %>.css'
+        }
       }
     },
     copy: {
-      js: {
-        expand: true,
-        cwd: 'vendor',
-        src: '<%= pkg.name %>.min.js',
-        dest: 'public/javascripts/'
-      },
-      css: {
-        expand: true,
-        cwd: 'vendor',
-        src: 'stylesheets/**.css',
-        dest: 'public/'
+      dev: {
+        files: [
+          {
+            expand: true,
+            cwd: 'vendor',
+            src: '<%= pkg.name %>.js',
+            dest: 'public/javascripts/'
+          },
+          {
+            expand: true,
+            cwd: 'vendor',
+            src: '<%= pkg.name %>.css',
+            dest: 'public/stylesheets/'
+          }
+        ]
       }
     },
     watch: {
@@ -145,7 +173,7 @@ module.exports = function(grunt) {
       //   tasks: ['concat:dist']
       // },
       concat_vendor: {
-        files: '<%= concat.vendor.src %>',
+        files: ['vendor/javascripts/*.js', 'vendor/stylesheets/*.css'],
         tasks: ['concat:vendor']
       },
       // uglify_dist: {
@@ -153,16 +181,16 @@ module.exports = function(grunt) {
       //   tasks: ['uglify:dist']
       // },
       uglify_vendor: {
-        files: '<%= uglify.vendor.src %>',
+        files: ['vendor/<%= pkg.name %>.js'],
         tasks: ['uglify:vendor']
       },
-      copy_js: {
-        files: '<%= copy.js.cwd %>/<%= copy.js.src %>',
-        tasks: ['copy:js']
+      cssmin_vendor: {
+        files: ['vendor/<%= pkg.name %>.css'],
+        tasks: ['cssmin:vendor']
       },
-      copy_css: {
-        files: '<%= copy.css.cwd %>/<%= copy.css.src %>',
-        tasks: ['copy:css']
+      copy_dev: {
+        files: ['<%= copy.dev.cwd %>/<%= pkg.name %>.js', '<%= copy.dev.cwd %>/<%= pkg.name %>.css'],
+        tasks: ['copy:dev']
       }
     }
   });
@@ -170,11 +198,12 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
-  grunt.registerTask('default', ['concat:vendor', 'uglify:vendor', 'copy', 'server', 'watch']);
-  grunt.registerTask('deploy', ['concat:vendor', 'uglify:vendor', 'copy']);
+  grunt.registerTask('default', ['concat:vendor', 'uglify:vendor', 'cssmin:vendor', 'copy:dev', 'server', 'watch']);
+  grunt.registerTask('deploy', ['concat:vendor', 'uglify:vendor', 'cssmin:vendor', 'copy:dev']);
 
 };

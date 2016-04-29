@@ -8,15 +8,15 @@ jQuery(document).ready(function($) {
     });
 // <!--start-smoth-scrolling-->
 
-$(function () {
-    $("#slider").responsiveSlides({
-        auto: true,
-        nav: true,
-        speed: 500,
-        namespace: "callbacks",
-        pager: true,
-    });
-});
+// $(function () {
+//     $("#slider").responsiveSlides({
+//         auto: true,
+//         nav: true,
+//         speed: 500,
+//         namespace: "callbacks",
+//         pager: true,
+//     });
+// });
 
 $(document).ready(function () {
     $('#horizontalTab').easyResponsiveTabs({
@@ -143,7 +143,7 @@ tag1.onclick = function() {
     drawing = document.getElementById("rpic");
 };
 tag2.onclick = function() {
-    drawing = document.getElementById("cpic")
+    drawing = document.getElementById("cpic");
 };
 
 plugin.onCameraFrame = function (_im) {

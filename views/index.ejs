@@ -6,113 +6,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="人脸识别, 人脸搜索" />
         <!--fonts-->
-        <!-- <link href="http://fonts.useso.com/css?family=Audiowide" rel="stylesheet" type="text/css">
-        <link href="http://fonts.useso.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css"> -->
-        <!-- 新 Bootstrap 核心 CSS 文件 -->
-        <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-        <!--custom-css-->
-        <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
-        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-        <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
-        <script src="/javascripts/faceall-activex.min.js"></script>
-        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-        <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <object id="myactivex" classid="CLSID:A828C04C-F9C3-4617-B6F1-9A992F03AFD3" onerror="alert('error')" style="display:none;"></object>
+        <!-- <link href="http://fonts.useso.com/css?family=Audiowide" rel="stylesheet" type="text/css"> -->
+        <link href="/stylesheets/faceall-activex.css" rel="stylesheet" type="text/css">
     </head>  
     <body>
-        <div class="header" id="home">
-            <div class="banner">
-                <div class="container">
-                    <nav class="navbar navbar-default bg">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="logo">
-                            <a href="index.html">Face<span>-All</span></a>
-                        </div>
-                        <div class="navbar-header">
-                          <button type="button" class="navbar-toggle collapsed mod" data-toggle="collapse"                                  
-                          data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar wt"></span>
-                            <span class="icon-bar wt"></span>
-                            <span class="icon-bar wt"></span>
-                          </button>
-                        </div>
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse bod" id="bs-example-navbar-collapse-1"> 
-                          <ul class="nav navbar-nav navbar-right navigate">
-                            <li><a href="#about" class="scroll">ABOUT</a></li>
-                            <li><a href="#services" class="scroll">SERVICES</a></li>
-                            <li><a href="#Solutions" class="scroll">SOLUTIONS</a></li>
-                            <li><a href="#contact" class="scroll">CONTACT</a></li>
-                          </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </nav>
-            </div>
-         </div>
-            <div class="banner-slider">
-                <div class="slider">
-                    <div class="callbacks_container">
-                      <ul class="rslides" id="slider">
-                        <li>
-                          <img src="images/1.jpg" alt="" class="img-responsive" />
-                          <div class="caption chn">
-                            <h3>We are Face-All</h3>
-                            <p>We Believe in Simple and Effective Solutions that Pays!</p>
-                            <a class="morebtn" href="#about">LEARN MORE</a>
-                          </div>
-                        </li>
-                        <li>
-                          <img src="images/2.jpg" alt="" class="img-responsive" />
-                            <div class="caption chn">
-                            <h3>CREATIVE SOLUTIONS</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                            <a class="morebtn" href="#about">LEARN MORE</a>
-                          </p>
-                            </div>
-                        </li>
-                        <li>
-                          <img src="images/3.jpg" alt="" class="img-responsive" />
-                            <div class="caption chn">
-                            <h3>Being a dreamer</h3>
-                            <p>but not living in a dream world.</p>
-                            <a class="morebtn" href="#about">LEARN MORE</a>
-                            </div>
-                        </li>
-                      </ul>
-                  </div>
-                </div>
-            </div>
-        </div>
-        <div class="about-deer" id="about">
-            <div class="container">
-                <div class="about-para">
-                    <h1>About Face-All</h1>
-                    <p>在人脸300-W的68个关键点检测上，错误率控制在5.31%，远低于目前文献中报道的6.31%。<br/>该服务可以用于人脸美图中的人脸关键点定位、医疗美容的唇线定位以及基于人脸的增强现实应用。</p>
-                </div>
-                <div class="about-grid">
-                    <div class="col-md-4 grid lft descoo">
-                        <h4>人脸检测</h4>
-                        <p>我们的人脸检测技术，在全球最具权威的人脸检测平台FDDB上准确率达到了90%，达到世界先进水平。</p>
-                    </div>
-                    <div class="col-md-4 grid cen">
-                        <h4>人脸验证(1:1)</h4>
-                        <p>在公开基准测试数据集Labeled Faces in the Wild（LFW）上准确率高于99.4%，达到世界先进水平（同一数据集谷歌的准确率为99.65%）。</p>
-                    </div>
-                    <div class="col-md-4 grid rgt descoo">
-                        <h4>人脸搜索 (1:N)</h4>
-                        <p>在2015 Megaface人脸搜索评测中，100万张人脸数据集的人脸搜索性能评估，一选率为64%，排名第三；谷歌的一选率为70%，排名第二。</p>
-                    </div>
-                <div class="clear-fix"></div>
-                </div>
-            </div>
-        </div>
-        <div class="deer-sollution" id="Solutions">
-            <div class="container">
-                <h2>Face-all Solutions</h2>
-                <p>我们优化算法不只为在评测数据集上取得最优成绩，而是通过优化<br/>更贴近实际的真实场景图片，使之成为在真实情况下最优的人脸识别、图像识别引擎。</p>
-                <a href="#">VIEW MORE</a>
-            </div>
-        </div>
+        <object id="myactivex" classid="CLSID:A828C04C-F9C3-4617-B6F1-9A992F03AFD3" onerror="alert('error')" style="display:none;"></object>
         <div class="deer-services" id="services">
             <div class="container">
                 <h3>Services</h3>
@@ -120,9 +18,9 @@
                     <div class="sap_tabs">  
                          <div id="horizontalTab">
                             <ul class="resp-tabs-list">
-                                <li class="resp-tab-item fs" aria-controls="tab_item-0" role="tab">
+                                <li class="resp-tab-item fs" aria-controls="tab_item-0" id="regtag" role="tab">
                                     <span><b>人证校验</b></span></li>
-                                <li class="resp-tab-item fs" aria-controls="tab_item-1" role="tab">
+                                <li class="resp-tab-item fs" aria-controls="tab_item-1" id="chetag" role="tab">
                                     <span><b>人脸识别</b></span></li>
                                 <div class="clearfix"></div>
                             </ul> 
@@ -287,5 +185,6 @@
         <!--footer-->
         <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
+        <script src="/javascripts/faceall-activex.js"></script>
     </body>
 </html>
