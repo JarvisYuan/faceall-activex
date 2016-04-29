@@ -111,11 +111,8 @@ module.exports = function(grunt) {
         files: {
           'vendor/<%= pkg.name %>.js': [
               'vendor/javascripts/jquery.js',
-              'vendor/javascripts/bootstrap.js', 
-              'vendor/javascripts/easing.js', 
-              'vendor/javascripts/easyResponsiveTabs.js', 
-              'vendor/javascripts/move-top.js', 
-              'vendor/javascripts/plugin.js', 
+              'vendor/javascripts/bootstrap.js',
+              'vendor/javascripts/plugin.js',
               'vendor/javascripts/script.js'
           ],
           'vendor/<%= pkg.name %>.css': [
