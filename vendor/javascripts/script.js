@@ -77,6 +77,9 @@ $(document).ready(function(){
                 htop +='<option value="'+place[key]._id+'">'+ place[key].name +'</option>';
             });
             $('.selpla').html(htop);
+        },
+        error: function(){
+            alert("验证地址获取错误");
         }
     });
 });
@@ -111,8 +114,9 @@ function ErrorTips(msg){
 
 //helper = new ActiveXObject("FaceallPlugin.DispFaceallHelper");
 var plugin = new FaceallPlugin(document.getElementById('myactivex'));
-var im = null;
-features = [];
+var im, feature1, feature2, score, RTImgPath, IDImgPath;
+RTfeatures = [];
+IDfeatures = [];
 
 function openCamera() {
     plugin.openCamera(0);
@@ -131,10 +135,20 @@ $("#rpic,#cpic").toggle(
 );
 
 //canvas
+var drawing = document.getElementById("rpic");
+var tag1 = document.getElementById("regtag");
+var tag2 = document.getElementById("chetag");
+
+tag1.onclick = function() {
+    drawing = document.getElementById("rpic");
+};
+tag2.onclick = function() {
+    drawing = document.getElementById("cpic")
+};
+
 plugin.onCameraFrame = function (_im) {
     im = _im;
     if (!im) return;
-    var drawing = document.getElementById("rpic");
     if (drawing.getContext) {
         var context = drawing.getContext("2d");
         var image = document.creatElement("img");
@@ -151,23 +165,26 @@ plugin.onCameraFrame = function (_im) {
 
 plugin.onCameraClosed = function () {
     if (im) {
-        var ftr = plugin.faceallExtractFeature(im);
-        features.push(ftr);
-        if (features.length > 1) {
-            feature1 = features[features.length - 2];
-            feature2 = features[features.length - 1];
-            score = plugin.faceallCompareFeatures(feature1, feature2);
-        }
-    }
-    if (im) {
-        plugin.uploadImage("http://192.168.1.110:3000/api/common/upload", im, function (res) {
-            alert("Image uploaded:" + res);
-        }, function () {
-            alert("Image upload failed.");
-        });
+        var ftr1 = plugin.faceallExtractFeature(im);
+        RTfeatures.push(ftr1);
+        if (RTfeatures.length > 0) {
+            feature1 = RTfeatures[RTfeatures.length - 1];
+        };
+    };
+
+    if (im) {  //上传即时照片
+        plugin.uploadImage(
+            "http://192.168.1.110:3000/api/common/upload", 
+            im, 
+            function (res) {
+                RTImgPath = res;
+            }, 
+            function () {
+                alert("Image upload failed.");
+            }
+        );
     }
 }
-
 
 
 function openReader() {
@@ -194,7 +211,35 @@ plugin.onCard = function (info) {
     image.src = "data:image/jpeg;base64," + info.Portrait.Base64;
     document.getElementById('rname').innerHTML = info.Name;
     document.getElementById('rcid').innerHTML = info.CardId;
-}
+
+    if (info.Portrait) {
+        var ftr2 = plugin.faceallExtractFeature(info.Portrait);
+        IDfeatures.push(ftr2);
+        if (IDfeatures.length > 0) {
+            feature2 = IDfeatures[IDfeatures.length - 1];
+        };
+    };
+
+    if (info.Portrait) {  //上传证件照片
+        plugin.uploadImage(
+            "http://192.168.1.110:3000/api/common/upload", 
+            info.Portrait, 
+            function (res) {
+                IDImgPath = res;
+            }, 
+            function () {
+                alert("Image upload failed.");
+            }
+        );
+    };
+};
+
+if (feature1>0 && feature2>0) {
+    score = plugin.faceallCompareFeatures(feature1, feature2);
+    if (score<0.8) {
+        alert("照片不匹配，请重新录入。");
+    };
+};
 
 
 //上传注册信息   (验证表单)
@@ -213,10 +258,10 @@ $(document).ready(function(){
                     "name" : $("#rname").val(),
                     "cid" : $("#rcid").val(),
                     "placeid" : $("#rplace").val(),
-                    "portrait_imgpath" : "证件照",
-                    "portrait_feature" : feature1,
-                    "photo_imgpath" : "即时照片",
-                    "photo_feature" : feature2
+                    "portrait_imgpath" : IDImgPath,
+                    "portrait_feature" : feature2,
+                    "photo_imgpath" : RTImgPath,
+                    "photo_feature" : feature1
                 }),
                 success: function(){
                     alert("登记成功");
@@ -242,8 +287,8 @@ $(document).ready(function(){
             dataType:"json",
             data: JSON.stringify({
                 "placeid" : $("#cplace").val(),
-                "photo_imgpath" : "即时照片",
-                "photo_feature" : ""
+                "photo_imgpath" : RTImgPath,
+                "photo_feature" : feature1
             }),
             success: function(cmsg){
                     $("#cname").val(cmsg.meta.visitor.name);
