@@ -124,10 +124,10 @@ function closeCamera() {
 $("#rpic,#cpic").toggle(
     function(){
         openCamera()
-    };
+    },
     function(){
         closeCamera()
-    };
+    }
 );
 
 //canvas
@@ -180,10 +180,10 @@ function closeReader() {
 $("#ridp").toggle(
     function(){
         openReader();
-    };
+    },
     function(){
         closeReader();
-    };
+    }
 );
 
 
