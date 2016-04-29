@@ -186,7 +186,7 @@ module.exports = function(grunt) {
         tasks: ['cssmin:vendor']
       },
       copy_dev: {
-        files: ['<%= copy.dev.cwd %>/<%= pkg.name %>.js', '<%= copy.dev.cwd %>/<%= pkg.name %>.css'],
+        files: ['vendor/<%= pkg.name %>.js', 'vendor/<%= pkg.name %>.css'],
         tasks: ['copy:dev']
       }
     }

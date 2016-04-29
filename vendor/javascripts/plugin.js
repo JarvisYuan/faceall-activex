@@ -47,8 +47,12 @@ function FaceallPlugin(pluginElement) {
     this.openCamera = function (cameraIdx) {
         this.capturedImage = null;
         this.capturedRect = null;
-        this.plugin.initCamera(cameraIdx);
-        this._cameraOpend = true;
+        if (this.plugin.initCamera(cameraIdx)) {
+            this._cameraOpend = true;
+            return true;
+        } else {
+            return false;
+        }
     };
 
     this.closeCamera = function () {

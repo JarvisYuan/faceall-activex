@@ -19,6 +19,14 @@ var PlaceModel = require('../../lib/models/place')(mongoose);
 router.post('/register', function(req, res, next) {
     var form = new multiparty.Form();
     form.parse(req, function (err, fields, files) {
+        if (!fields) fields = (function(req) {
+            var ret = {};
+            for (var k in req.body) {
+                ret[k] = [req.body[k]];
+            }
+            return ret;
+        })(req); // x-www-form-urlencoded
+        if (!fields) { res.sendStatus(400); return; }
         if (!(fields.cid && fields.cid[0]
                 && fields.name && fields.cid[0]
                 && fields.placeid && fields.cid[0]
@@ -126,6 +134,14 @@ router.post('/register', function(req, res, next) {
 router.post('/checkin', function(req, res, next) {
     var form = new multiparty.Form();
     form.parse(req, function (err, fields, files) {
+        if (!fields) fields = (function(req) {
+            var ret = {};
+            for (var k in req.body) {
+                ret[k] = [req.body[k]];
+            }
+            return ret;
+        })(req); // x-www-form-urlencoded
+        if (!fields) { res.sendStatus(400); return; }
         if (!(fields.placeid && fields.placeid[0] 
                 && fields.photo_imgpath && fields.photo_imgpath[0]
                 && fields.photo_feature && fields.photo_feature[0])) {
@@ -170,7 +186,7 @@ router.post('/checkin', function(req, res, next) {
                                         "_id": visitor._id,
                                         "cid": visitor.cid,
                                         "name": visitor.name,
-                                        "photo": "/public/uploads/" + visitor.face.imagePath
+                                        "photo": "/uploads/" + visitor.face.imagePath
                                     }}));
                                 } else {
                                     res.send(new ResponseError(2001));
