@@ -114,28 +114,6 @@ var plugin = new FaceallPlugin(document.getElementById('myactivex'));
 var im = null;
 features = [];
 
-
-//canvas
-plugin.onCameraFrame = function (_im) {
-    im = _im;
-    if (!im) return;
-    var drawing = document.getElementById("pic");
-    if (drawing.getContext) {
-        var context = drawing.getContext("2d");
-        var image = document.creatElement("img");
-        image.src = "data:image/jpeg;base64," + im.Base64;
-        context.drawImage(image,0,0);  
-        //将img放入canvas(0,0)坐标
-
-        var rect = plugin.detectCurrentFaceRect();  
-        //绘制人脸矩形框
-        if (rect.Width > 0 && rect.Height > 0) {
-            context.strokeStyle = "#FF0000";
-            context.strokeRect (rect.X, rect.Y, rect.Width, rect.Height);
-        };
-    };
-};
-
 function openCamera() {
     plugin.openCamera(0);
 }
@@ -143,10 +121,79 @@ function closeCamera() {
     plugin.closeCamera();
 }
 
+$("#rpic,#cpic").toggle(
+    function(){
+        openCamera()
+    };
+    function(){
+        closeCamera()
+    };
+);
+
+//canvas
+plugin.onCameraFrame = function (_im) {
+    im = _im;
+    if (!im) return;
+    var drawing = document.getElementById("rpic");
+    if (drawing.getContext) {
+        var context = drawing.getContext("2d");
+        var image = document.creatElement("img");
+        image.src = "data:image/jpeg;base64," + im.Base64;
+        context.drawImage(image,0,0);  //将img放入canvas(0,0)坐标
+
+        var rect = plugin.detectCurrentFaceRect();  //绘制人脸矩形框
+        if (rect.Width > 0 && rect.Height > 0) {
+            context.strokeStyle = "#FF0000";
+            context.strokeRect (rect.X, rect.Y, rect.Width, rect.Height);
+        };
+    };
+};
+
+function openReader() {
+    if (!plugin.openCardReader()) alert("failed to open reader");
+}
+function closeReader() {
+    if (!plugin.closeCardReader()) alert("failed to close reader");
+}
+
+$("#ridp").click( openReader() );
+
+plugin.onCard = function (info) {
+    var context = drawing.getContext("2d");
+    var image = document.creatElement("img");
+    context.drawImage(image,0,0);
+    image.src = "data:image/jpeg;base64," + info.Portrait.Base64;
+    document.getElementById('rname').innerHTML = info.Name;
+    document.getElementById('rcid').innerHTML = info.CardId;
+}
 
 
 
+//----------------------------
+//helper = new ActiveXObject("FaceallPlugin.DispFaceallHelper");
 
+plugin.onCameraClosed = function () {
+    alert("Camera Closed");
+    if (im) {
+        var ftr = plugin.faceallExtractFeature(im);
+        features.push(ftr);
+        if (features.length > 1) {
+            var f1 = features[features.length - 2];
+            var f2 = features[features.length - 1];
+            var score = plugin.faceallCompareFeatures(f1, f2);
+            alert(score);
+        }
+    }
+    if (im) {
+        plugin.uploadImage("http://192.168.1.110:3000/api/common/upload", im, function (res) {
+            alert("Uploaded:" + res);
+        }, function () {
+            alert("Upload failed");
+        });
+    }
+}
+
+//-----------------------------
 
 
 //上传注册信息   (验证表单)
