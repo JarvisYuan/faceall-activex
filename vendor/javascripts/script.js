@@ -1,12 +1,12 @@
 
-<!--start-smoth-scrolling-->
+// <!--start-smoth-scrolling-->
 jQuery(document).ready(function($) {
     $(".scroll").click(function(event){   
         event.preventDefault();
             $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
         });
     });
-<!--start-smoth-scrolling-->
+// <!--start-smoth-scrolling-->
 
 $(function () {
     $("#slider").responsiveSlides({
@@ -81,7 +81,7 @@ $(document).ready(function(){
     });
 });
 
-//获取注册时间 --事件触发待改（刷身份证）
+//获取注册时间 --事件触发（刷身份证）
 $(document).ready(function(){
     $("#rbtn").click(function(){
         var iDate = new Date()
@@ -91,7 +91,7 @@ $(document).ready(function(){
     });
 });
 
-//定义执行失败后的函数
+//执行失败返回信息
 function ErrorTips(msg){
     var alms= msg.message
     switch (msg.status){
@@ -108,7 +108,48 @@ function ErrorTips(msg){
     };
 };
 
-//上传注册信息   (if验证表单)
+
+
+var plugin = new FaceallPlugin(document.getElementById('myactivex'));
+var im = null;
+features = [];
+
+
+//canvas
+plugin.onCameraFrame = function (_im) {
+    im = _im;
+    if (!im) return;
+    var drawing = document.getElementById("pic");
+    if (drawing.getContext) {
+        var context = drawing.getContext("2d");
+        var image = document.creatElement("img");
+        image.src = "data:image/jpeg;base64," + im.Base64;
+        context.drawImage(image,0,0);  
+        //将img放入canvas(0,0)坐标
+
+        var rect = plugin.detectCurrentFaceRect();  
+        //绘制人脸矩形框
+        if (rect.Width > 0 && rect.Height > 0) {
+            context.strokeStyle = "#FF0000";
+            context.strokeRect (rect.X, rect.Y, rect.Width, rect.Height);
+        };
+    };
+};
+
+function openCamera() {
+    plugin.openCamera(0);
+}
+function closeCamera() {
+    plugin.closeCamera();
+}
+
+
+
+
+
+
+
+//上传注册信息   (验证表单)
 $(document).ready(function(){
     $("#rbtn").click(function(){
         if ( !$("#rcid").val()) {
