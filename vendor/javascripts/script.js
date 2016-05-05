@@ -246,7 +246,7 @@ if (page_type == "register") {
                     .done(function(result) {
                         if (result) {
                             if (result.status == 0) {
-                                checkSuccessCallback(result.meta.visitor);
+                                checkSuccessCallback(result.meta.visitors[0]);
                             } else if (result.status == 2001) {
                                 checkFailedCallback("找不到该访客");
                             } else {
@@ -270,7 +270,7 @@ if (page_type == "register") {
 }
 
 function openCamera() {
-    if (plugin.openCamera(1)) {
+    if (plugin.openCamera(0)) {
         $('#button-open-camera').hide();
         $('#button-close-camera').show();
     } else {

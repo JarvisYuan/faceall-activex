@@ -174,22 +174,27 @@ router.post('/checkin', function(req, res, next) {
                                 new CommonError("An error occured when get visitors", err).print();
                                 res.sendStatus(500);
                             } else {
-                                var visitor = service.recognizeVisitor(photo_feature, visitors);
-                                if (visitor) {
+                                var visitors = service.recognizeVisitor(photo_feature, visitors);
+                                var resultMeta = {visitors: []};
+                                for (var i = 0; i < visitors.length; i++) {
+                                    resultMeta.visitors.push({
+                                        "_id": visitors[i].visitor._id,
+                                        "cid": visitors[i].visitor.cid,
+                                        "name": visitors[i].visitor.name,
+                                        "photo": "/uploads/" + visitors[i].visitor.face.imagePath,
+                                        "score": visitors[i].score
+                                    });
+                                }
+                                if ((visitors.length > 0) && (visitors[0].score > config.recognize.score_threshold)) {
                                     var visitHistory = new VisitHistoryModel({
-                                        visitorId: visitor._id,
+                                        visitorId: visitors[0].visitor._id,
                                         placeId: place._id,
                                         imagePath: photoPath
                                     });
                                     visitHistory.save();
-                                    res.send(new ResponseError(0, null, {visitor: {
-                                        "_id": visitor._id,
-                                        "cid": visitor.cid,
-                                        "name": visitor.name,
-                                        "photo": "/uploads/" + visitor.face.imagePath
-                                    }}));
+                                    res.send(new ResponseError(0, null, resultMeta));
                                 } else {
-                                    res.send(new ResponseError(2001));
+                                    res.send(new ResponseError(2001, "no match visitor", resultMeta));
                                 }
                             }
                         });
