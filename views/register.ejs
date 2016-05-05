@@ -8,53 +8,53 @@
     <link href="/stylesheets/faceall-activex.css" rel="stylesheet" type="text/css">
 </head>  
 <body>
-    <div class="header">
+    <div class="header" style="padding-bottom: 8px;">
         <h1>监狱验证系统 - 登记</h1>
         <p id="place-info">&nbsp;</p>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-xs-6" style="padding-top: 20px;">
+            <div class="col-xs-6" style="padding-top: 70px;">
                 <div class="camera-section">
                     <p>请注视摄像头，使得您的头部被选中</p>
                     <div class="camera-box">
-                        <img id="camera-frame" />
-                        <div style="display: none;" class="camera-frame-rect" id="camera-face-rect" style="width: 50px; height: 80px;"></div>
+                        <img id="camera-frame" class="img-thumbnail"/>
+                        <div class="camera-frame-rect" id="camera-face-rect" style="display: none; width: 50px; height: 80px;"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6" style="padding-top: 50px;">
+            <div class="col-xs-6" style="padding-top: 100px;">
                 <div class="idcard-section" id="idcard-section" style="display: none;">
                     <img class="idcard-portrait" id="idcard-portrait" />
                     <div class="idcard-infos">
                         <p>
-                            <span class="idcard-prop">姓名：</span>
+                            <span class="idcard-prop">访客姓名：</span></br>
                             <span class="idcard-value" id="idcard-name">奥巴马</span>
-                        </p>
+                        </p></br>
                         <p>
-                            <span class="idcard-prop">身份证号：</span>
-                            <span class="idcard-value" id="idcard-code">123412196804230037</span>
+                            <span class="idcard-prop">身份证号：</span></br>
+                            <span class="idcard-value" id="idcard-code">123456199410200016</span>
                         </p>
                         <div class="clearfix"></div>
-                        <p class="status-hint" id="status-hint"></p>
                     </div>
+                    <p class="status-hint" id="status-hint"></p>
                 </div>
                 <div class="idcard-section idcard-section-not-detected" id="idcard-section-not-detected">
-                    <p>请将身份证靠近读卡器</p>
+                    <p>请将身份证置于读卡器上</p>
                 </div>
             </div>
         </div>
-        <div class="row" style="padding-top: 20px;">
+        <div class="row" style="padding-top: 30px;">
             <div class="col-xs-6">
                 <div class="bottom-button-container">
                     <button class="form-control btn btn-primary" id="button-open-camera" onclick="openCamera()">打开相机</button>
-                    <button class="form-control btn btn-danger" id="button-close-camera" onclick="closeCamera()" style="display: none;">关闭相机</button>
+                    <button class="form-control btn btn-warning" id="button-close-camera" onclick="closeCamera()" style="display: none;">关闭相机</button>
                 </div>
             </div>
             <div class="col-xs-6">
                 <div class="bottom-button-container">
                     <button class="form-control btn btn-primary" id="button-open-reader" onclick="openReader()">打开读卡器</button>
-                    <button class="form-control btn btn-danger" id="button-close-reader" onclick="closeReader()" style="display: none;">关闭读卡器</button>
+                    <button class="form-control btn btn-warning" id="button-close-reader" onclick="closeReader()" style="display: none;">关闭读卡器</button>
                 </div>
             </div>
         </div>

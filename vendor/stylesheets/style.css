@@ -1,10 +1,10 @@
 .header {
-    padding: 50px 20px;
+    padding: 28px 0 38px 40px;
     background-color: #6f5499;
     color: white;
 }
 .home-section {
-    padding: 50px;
+    padding-top: 80px;
     text-align: center;
 }
 .home-section .btn {
@@ -13,12 +13,12 @@
 }
 
 .camera-section {
-    width: 320px;
+    width: 324px;
     margin: 0px auto;
 }
 .camera-box {
-    width: 320px;
-    height: 240px;
+    width: 322px;
+    height: 242px;
     position: relative;
     border: 1px #ddd solid;
 }
@@ -46,15 +46,19 @@
 .idcard-portrait {
     width: 80px;
     height: 100px;
+    margin: 38px 10px 0 36px;
     float: left;
 }
 .idcard-infos {
-    margin-left: 90px;
+    margin-left: 126px;
 }
 .idcard-infos p {
-    margin: 5px 0px;
-    height: 20px;
-    line-height: 20px;
+    margin: 30px 0 0 20px;
+    height: 18px;
+    line-height: 25px;
+}
+.idcard-infos p span ~ span {
+    padding-left: 30px;
 }
 .idcard-infos p .idcard-prop {
     display: inline-block;
@@ -77,15 +81,15 @@
 }
 .status-hint {
     text-align: center;
-    font-size: 18px;
-    padding: 5px 20px;
-    color: #666;
+    font-size: 16px;
+    padding-top: 35px;
+    color: #888;
 }
 .status-hint.success {
-    color: #00a;
+    color: #5599FF;
 }
 .status-hint.error {
-    color: #f00;
+    color: #FF7744;
 }
 
 .bottom-button-container {
