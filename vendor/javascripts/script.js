@@ -1,3 +1,20 @@
+function myBrowser(){
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+    var isOpera = userAgent.indexOf("Opera") > -1;
+    var isIE = userAgent.indexOf("compatible") > -1;
+    var isMSIE = userAgent.indexOf("MSIE") > -1;
+    if (isIE && isMSIE && !isOpera) {
+        return IE;
+    };
+}; //if (-[1,]) 
+
+window.onload = function() { 
+    if (myBrowser() != "IE") {
+    alert("请用IE浏览器打开，并加载ActiveX控件");
+    }; 
+}; //$(document).ready() 区别
+
+
 var score_threshold = 0.8;
 
 var modal = {};

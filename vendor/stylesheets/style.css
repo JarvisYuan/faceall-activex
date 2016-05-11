@@ -4,7 +4,7 @@
     color: white;
 }
 .home-section {
-    padding-top: 80px;
+    padding-top: 90px;
     text-align: center;
 }
 .home-section .btn {
@@ -96,3 +96,92 @@
     width: 180px;
     margin: 0px auto;
 }
+
+
+.footer {
+    margin-top: 70px;
+    height: 120px;
+    background: #CCC;
+    padding: 2em 0em;
+}
+.logo{
+    float: left;
+    margin: 0;
+}
+.logo a{
+    font-family: 'Audiowide', cursive;
+    font-size: 3em;
+    text-decoration: none;
+}
+.logo a span{
+    color: #fff;
+}
+.logo a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.logo span:hover{
+    color: #edb82a;
+}
+.cpyrt p{
+    color: #d7a82b;
+    font-size: 1em;
+    font-family: 'Audiowide', cursive;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 1.8em;
+}
+.social ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.social ul li{
+    margin: 25px 13px 0px;
+    padding: 0;
+    display: inline-block;
+}
+.social ul li a{
+    background: url(../images/social.png);
+    width: 19px;
+    height: 19px;
+    display: inline-block;
+}
+.social ul li a.face{
+    background-position: 0px 0px;
+}
+.social ul li a.face:hover{
+    background-position: 0px 18px;
+}
+.social ul li a.twit{
+    background-position: -38px 0px;
+}
+.social ul li a.twit:hover{
+    background-position: -38px 18px;
+}
+.social ul li a.in{
+    background-position: -79px 0px;
+}
+.social ul li a.in:hover{
+    background-position: -79px 18px;
+}
+.social ul li a.gpls{
+    background-position: 63px 0px;
+}
+.social ul li a.gpls:hover{
+    background-position: 63px 18px;
+}
+.social ul li a.del{
+    background-position: 22px 0px;
+}
+.social ul li a.del:hover{
+    background-position: 22px 18px;
+}
+.cpyrt.fltt a {
+    color: #fff;
+}
+.cpyrt.fltt a:hover {
+    color: #FF9900;
+}
+
+

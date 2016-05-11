@@ -6,6 +6,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="人脸识别, 人脸搜索" />
     <link href="/stylesheets/faceall-activex.css" rel="stylesheet" type="text/css">
+    <script src="/javascripts/faceall-activex.js"></script>
+    <script type="text/javascript">page_type = "register";</script>
+    <object id="faceall-plugin" class="faceall-plugin" classid="CLSID:A828C04C-F9C3-4617-B6F1-9A992F03AFD3" onerror="alert('error')" style="display: none;"></object>
 </head>  
 <body>
     <div class="header" style="padding-bottom: 8px;">
@@ -44,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="padding-top: 30px;">
+        <div class="row" style="padding-top: 28px;">
             <div class="col-xs-6">
                 <div class="bottom-button-container">
                     <button class="form-control btn btn-primary" id="button-open-camera" onclick="openCamera()">打开相机</button>
@@ -57,6 +60,28 @@
                     <button class="form-control btn btn-warning" id="button-close-reader" onclick="closeReader()" style="display: none;">关闭读卡器</button>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="footer" id="foot">
+        <div class="container">
+            <div class="col-md-3 logo flt">
+                <a href="#">Face<span>-All</span></a>
+            </div>
+            <div class="col-md-6 cpyrt fltt">
+                <p>Copyright &copy; 2015.Face-All All rights reserved.</p>
+            </div>
+            <div class="col-md-3 flt">
+                <div class="social">
+                    <ul>
+                        <li><a href="#" class="face"></a></li>
+                        <li><a href="#" class="twit"></a></li>
+                        <li><a href="#" class="in"></a></li>
+                        <li><a href="#" class="gpls"></a></li>
+                        <li><a href="#" class="del"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
         </div>
     </div>
 
@@ -77,9 +102,5 @@
             </div>
         </div>
     </div>
-
-    <object id="faceall-plugin" class="faceall-plugin" classid="CLSID:A828C04C-F9C3-4617-B6F1-9A992F03AFD3" onerror="alert('error')"></object>
-    <script type="text/javascript">page_type = "register";</script>
-    <script src="/javascripts/faceall-activex.js"></script>
 </body>
 </html>
