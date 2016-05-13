@@ -1,23 +1,30 @@
 function myBrowser(){
     var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
-    var isOpera = userAgent.indexOf("Opera") > -1;
-    var isIE = userAgent.indexOf("compatible") > -1;
-    var isMSIE = userAgent.indexOf("MSIE") > -1;
-    if (isIE && isMSIE && !isOpera) {
-        return IE;
-    };
-}; //if (-[1,]) 
+    if (userAgent.indexOf("Opera") > -1) {
+        return "Opera"
+    }; //判断是否Opera浏览器
+    if (userAgent.indexOf("Firefox") > -1) {
+        return "FF";
+    } //判断是否Firefox浏览器
+    if (userAgent.indexOf("Chrome") > -1){
+        return "Chrome";
+    }
+    if (userAgent.indexOf("Safari") > -1) {
+        return "Safari";
+    } //判断是否Safari浏览器
+}  //if (-[1,]) 
 
 window.onload = function() { 
-    if (myBrowser() != "IE") {
-    alert("请用IE浏览器打开，并加载ActiveX控件");
-    }; 
+    var mb = myBrowser();
+    if ("Chrome" == mb || "FF" == mb || "Opera" == mb || "Safari" == mb) {
+        alert("请使用IE浏览器打开，并加载ActiveX控件");
+    }
 }; //$(document).ready() 区别
 
 
 var score_threshold = 0.8;
 
-var modal = {};
+var modal = {}; // new object()
 modal.message = function(title, content, callback) {
     $('#modal-message').find('.modal-title').text(title);
     $('#modal-message').find('.modal-body p').text(content);
