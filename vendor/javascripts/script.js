@@ -2,24 +2,24 @@ function myBrowser(){
     var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
     if (userAgent.indexOf("Opera") > -1) {
         return "Opera"
-    }; //判断是否Opera浏览器
+    }; 
     if (userAgent.indexOf("Firefox") > -1) {
         return "FF";
-    } //判断是否Firefox浏览器
+    } 
     if (userAgent.indexOf("Chrome") > -1){
         return "Chrome";
     }
     if (userAgent.indexOf("Safari") > -1) {
         return "Safari";
-    } //判断是否Safari浏览器
+    } 
 }  //if (-[1,]) 
 
-window.onload = function() { 
+$(window).on('load', function() { 
     var mb = myBrowser();
     if ("Chrome" == mb || "FF" == mb || "Opera" == mb || "Safari" == mb) {
         alert("请使用IE浏览器打开，并加载ActiveX控件");
     }
-}; //$(document).ready() 区别
+}); //$(document).ready() 区别
 
 
 var score_threshold = 0.8;
@@ -38,6 +38,11 @@ var place_fake_id = "56e9047d69ae45dd10d41227";
 
 var plugin;
 
+$(function(){
+    console.log('aaa');
+    plugin = new FaceallPlugin(document.getElementById('faceall-plugin'));
+});
+
 $(function() {
     $.ajax({
         url: '/api/place/' + place_fake_id,
@@ -52,14 +57,11 @@ $(function() {
     })
     .always(function() {
     });
-    plugin.onCameraClosed = function () {
+    if (plugin) plugin.onCameraClosed = function () {
         $('#button-close-camera').hide();
         $('#button-open-camera').show();
     };
 });
-
-
-plugin = new FaceallPlugin(document.getElementById('faceall-plugin'));
 
 if (page_type == "register") {
     $(function() {
